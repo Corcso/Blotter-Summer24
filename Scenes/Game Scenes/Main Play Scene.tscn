@@ -118,10 +118,22 @@ texture_normal = ExtResource("8_jodr4")
 script = ExtResource("11_n32g3")
 
 [node name="Bingo Boom Text" type="Sprite2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
+position = Vector2(-811, -679)
+rotation = 0.959931
 texture = ExtResource("9_rfrmu")
 
+[node name="Player Name Bingo Boom Text" type="Label" parent="."]
+offset_left = 464.0
+offset_top = 354.0
+offset_right = 1064.0
+offset_bottom = 441.0
+rotation = 0.959931
+text = "Player"
+label_settings = SubResource("LabelSettings_vnfay")
+horizontal_alignment = 2
+
 [node name="Generating Cards Popup" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("10_7l2cr")
 
 [node name="Label" type="Label" parent="Generating Cards Popup"]

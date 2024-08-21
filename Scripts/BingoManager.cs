@@ -50,6 +50,7 @@ public partial class BingoManager : Node
     Vector2 BW_moveCardPosition;
 	Node2D BW_bingoBoomPopup;
 	Vector2 BW_BallPositionWhenBingoPressed;
+    Label BW_playerNameBoomText;
 
 	// == New Cards Animation variables
 	Node2D playerCardHolder;
@@ -84,9 +85,10 @@ public partial class BingoManager : Node
 
         // Setup bingo win nodes
         BW_bingoBoomPopup = GetNode<Node2D>("../Bingo Boom Text");
+        BW_playerNameBoomText = GetNode<Label>("../Player Name Bingo Boom Text");
 
-		// Setup card holders
-		otherPlayerCardHolder = GetParent().GetNode<Node2D>("./Other Players Cards");
+        // Setup card holders
+        otherPlayerCardHolder = GetParent().GetNode<Node2D>("./Other Players Cards");
 		playerCardHolder = GetParent().GetNode<Node2D>("./Player Bingo Card");
         bingoButton = GetParent().GetNode<BingoButton>("./Bingo Button");
 
@@ -175,17 +177,24 @@ public partial class BingoManager : Node
 						BW_moveCardPosition = playersCards[BW_winningPlayerId].Position;
 					}
 					BW_BallPositionWhenBingoPressed = bingoBall.Position;
+					BW_playerNameBoomText.Text = GameManager.players[BW_winningPlayerId].name;
 
                 }
+				// Card position constants
 				Vector2 MY_WIN_START_CARD_POSITION = new Vector2(-316, 0);
 				Vector2 MY_WIN_HOLD_CARD_POSITION = new Vector2(-82, 0);
                 Vector2 OTHER_WIN_HOLD_CARD_POSITION = new Vector2(0, -1960);
 				Vector2 MY_LOSS_HOLD_CARD_POSITION = new Vector2(-750, 0);
+				// Text position constants
+				Vector2 BINGO_BOOM_START_POSITION = new Vector2(61, 565);
+				Vector2 BINGO_BOOM_HOLD_POSITION = new Vector2(-308, 39);
+				Vector2 BINGO_BOOM_END_POSITION = new Vector2(-811, -679);
+                Vector2 PLAYER_NAME_BINGO_BOOM_START_POSITION = new Vector2(-430, -922);
+                Vector2 PLAYER_NAME_BINGO_BOOM_HOLD_POSITION = new Vector2(-51, -381);
+                Vector2 PLAYER_NAME_BINGO_BOOM_END_POSITION = new Vector2(464, 354);
                 if (timeInState <= 0.5f)
 				{
-					//BW_bingoBoomPopup.Rotation = Mathf.Lerp(0, 2 * Mathf.Pi, (float)timeInState * 2);
-					BW_bingoBoomPopup.Rotation = (float)Tween.InterpolateValue(0.0f, 2 * Mathf.Pi, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
-                    BW_bingoBoomPopup.Scale = Vector2.One * (float)Tween.InterpolateValue(0.0f, 1.0f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+					
 
                     otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(500, 0), new Vector2(200, 0), timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     if (BW_winningPlayerId != Multiplayer.GetUniqueId())
@@ -202,17 +211,22 @@ public partial class BingoManager : Node
                     }
 					if(previousGameState == GameState.DRAWING_BALL)
 					{
-						bingoBall.Position = BW_BallPositionWhenBingoPressed.Lerp(END_BALL_POSITION, Mathf.Clamp(((float)timeInState * 2) * ((float)timeInState * 2), 0, 1));
+						bingoBall.Position = BW_BallPositionWhenBingoPressed.Lerp(END_BALL_POSITION, Mathf.Clamp((float)timeInState * 2 * ((float)timeInState * 2), 0, 1));
                     }
                 }
-				else if (timeInState <= 2.5f)
+				else if (timeInState <= 1.0f)
 				{
-					BW_bingoBoomPopup.Rotation = Mathf.Sin((Mathf.Pi * (float)timeInState) - 1.5f) / 2.5f;
-				}
-				else if (timeInState <= 3f)
+                    BW_bingoBoomPopup.Position = (Vector2)Tween.InterpolateValue(BINGO_BOOM_START_POSITION, BINGO_BOOM_HOLD_POSITION - BINGO_BOOM_START_POSITION, timeInState - 0.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.Out);
+                    BW_playerNameBoomText.Position = (Vector2)Tween.InterpolateValue(PLAYER_NAME_BINGO_BOOM_START_POSITION, PLAYER_NAME_BINGO_BOOM_HOLD_POSITION - PLAYER_NAME_BINGO_BOOM_START_POSITION, timeInState - 0.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.Out);
+                }
+                else if (timeInState <= 2.5f && timeInState > 2.0f)
+                {
+                    BW_bingoBoomPopup.Position = (Vector2)Tween.InterpolateValue(BINGO_BOOM_HOLD_POSITION, BINGO_BOOM_END_POSITION - BINGO_BOOM_HOLD_POSITION, timeInState - 2.0f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.In);
+                    BW_playerNameBoomText.Position = (Vector2)Tween.InterpolateValue(PLAYER_NAME_BINGO_BOOM_HOLD_POSITION, PLAYER_NAME_BINGO_BOOM_END_POSITION - PLAYER_NAME_BINGO_BOOM_HOLD_POSITION, timeInState - 2.0f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.In);
+                }
+                else if (timeInState <= 3f && timeInState > 2.5f)
 				{
-                    BW_bingoBoomPopup.Rotation = (float)Tween.InterpolateValue(2 * Mathf.Pi, 4 * Mathf.Pi, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
-                    BW_bingoBoomPopup.Scale = Vector2.One * (float)Tween.InterpolateValue(1.0f, -1.0f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                    //BW_bingoBoomPopup.Position = (Vector2)Tween.InterpolateValue(BINGO_BOOM_HOLD_POSITION, BINGO_BOOM_END_POSITION - BINGO_BOOM_HOLD_POSITION, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.In);
 
                     otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(700, 0), new Vector2(-200, 0), timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     if (BW_winningPlayerId != Multiplayer.GetUniqueId())
@@ -229,7 +243,7 @@ public partial class BingoManager : Node
                         playerCardHolder.Scale = Vector2.One * (float)Tween.InterpolateValue(1.2f, -0.2f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     }
                 }
-				else {
+				else if (timeInState > 3.0f) {
 					if(previousGameState == GameState.DRAWING_BALL) ChangeState(GameState.DRAWING_BALL);
 					else ChangeState(GameState.BALL_ROLL);
 					break;
