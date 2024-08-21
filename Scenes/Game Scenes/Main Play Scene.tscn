@@ -133,7 +133,6 @@ label_settings = SubResource("LabelSettings_vnfay")
 horizontal_alignment = 2
 
 [node name="Generating Cards Popup" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("10_7l2cr")
 
 [node name="Label" type="Label" parent="Generating Cards Popup"]
@@ -145,6 +144,21 @@ theme = ExtResource("11_nejf4")
 theme_override_font_sizes/font_size = 72
 text = "Generating
 Bingo Cards"
+horizontal_alignment = 1
+
+[node name="New Game Type Popup" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_7l2cr")
+
+[node name="Label" type="Label" parent="New Game Type Popup"]
+offset_left = -310.0
+offset_top = -103.0
+offset_right = 304.0
+offset_bottom = 96.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 72
+text = "Now Playing For
+Full House!"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Bingo Button" to="BingoManager" method="_on_bingo_button_pressed"]

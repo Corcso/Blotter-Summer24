@@ -7,7 +7,7 @@ using System.Linq;
 public partial class BingoManager : Node
 {
 	// Enum for game state
-	public enum GameState { GENERATING_CARDS, CARD_SLIDE_IN, BALL_ROLL, DRAWING_BALL, BINGO };
+	public enum GameState { GENERATING_CARDS, CARD_SLIDE_IN, BALL_ROLL, DRAWING_BALL, BINGO, NEW_GAME_TYPE, GAME_END };
 
 	// Current game state
 	GameState currentGameState;
@@ -58,6 +58,9 @@ public partial class BingoManager : Node
     BingoButton bingoButton;
 	FontFile kalinaBold;
 
+	// == New Game Type Animation variables
+	Node2D newGameTypePopupBox;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -92,8 +95,11 @@ public partial class BingoManager : Node
 		playerCardHolder = GetParent().GetNode<Node2D>("./Player Bingo Card");
         bingoButton = GetParent().GetNode<BingoButton>("./Bingo Button");
 
-		// Load font for player names
-		kalinaBold = ResourceLoader.Load<FontFile>("res://Fonts/Kalina/Kalnia-Bold.ttf");
+        // Setup new game type popup
+        newGameTypePopupBox = GetParent().GetNode<Node2D>("./New Game Type Popup");
+
+        // Load font for player names
+        kalinaBold = ResourceLoader.Load<FontFile>("res://Fonts/Kalina/Kalnia-Bold.ttf");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -244,10 +250,42 @@ public partial class BingoManager : Node
                     }
                 }
 				else if (timeInState > 3.0f) {
-					if(previousGameState == GameState.DRAWING_BALL) ChangeState(GameState.DRAWING_BALL);
-					else ChangeState(GameState.BALL_ROLL);
+					//if(previousGameState == GameState.DRAWING_BALL) ChangeState(GameState.DRAWING_BALL);
+					//else ChangeState(GameState.BALL_ROLL);
+					ChangeState(GameState.NEW_GAME_TYPE);
 					break;
                 }
+                break;
+			case GameState.NEW_GAME_TYPE:
+                Vector2 POPUP_START_POSITION = new Vector2(0, -500);
+                Vector2 POPUP_HOLD_POSITION = new Vector2(0, 0);
+                if (stateChanged)
+                {
+                    stateChanged = false;
+					if (currentGameType == BingoGameType.ROW)
+					{
+						currentGameType = BingoGameType.FULL_HOUSE;
+						newGameTypePopupBox.GetChild<Label>(0).Text = "Now Playing For\nFull House!";
+					}
+					else
+					{
+						currentGameType = BingoGameType.THREE_FULL_HOSUE;
+						newGameTypePopupBox.GetChild<Label>(0).Text = "Now Playing For\n 3 Full Houses!";
+					}
+					newGameTypePopupBox.Show();
+                }
+				if (timeInState <= 0.7f)
+				{
+					newGameTypePopupBox.Position = (Vector2)Tween.InterpolateValue(POPUP_START_POSITION, POPUP_HOLD_POSITION - POPUP_START_POSITION, timeInState, 0.7, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                }
+				else if (timeInState > 1.4f && timeInState <= 2.1f)
+				{
+                    newGameTypePopupBox.Position = (Vector2)Tween.InterpolateValue(POPUP_HOLD_POSITION, POPUP_START_POSITION - POPUP_HOLD_POSITION, timeInState - 1.4f, 0.7, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                }
+				else if (timeInState > 2.1f) { 
+					ChangeState(GameState.BALL_ROLL);
+					newGameTypePopupBox.Hide();
+				}
                 break;
 		}
 		timeInState += delta;
