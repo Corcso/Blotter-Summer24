@@ -11,6 +11,7 @@ public partial class BingoManager : Node
 
 	// Current game state
 	GameState currentGameState;
+	GameState previousGameState;
 	bool stateChanged;
 	// Used for the animations
 	double timeInState;
@@ -71,6 +72,7 @@ public partial class BingoManager : Node
 
         // Set default game state
         currentGameState = GameState.GENERATING_CARDS;
+		previousGameState = GameState.GENERATING_CARDS;
         stateChanged = true;
 
         // Set ball related variables
@@ -112,9 +114,7 @@ public partial class BingoManager : Node
                 otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(700, 0), new Vector2(-200, 0), timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
                 bingoButton.Position = (Vector2)Tween.InterpolateValue(new Vector2(-128, 380), new Vector2(0, -200), timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
 				if (timeInState >= 0.75) {
-                    currentGameState = GameState.BALL_ROLL;
-                    timeInState = 0;
-                    stateChanged = true;
+					ChangeState(GameState.BALL_ROLL);
                     break;
                 }
                 break;
@@ -137,9 +137,7 @@ public partial class BingoManager : Node
                 }
                 if (timeInState >= 2)
                 {
-                    currentGameState = GameState.DRAWING_BALL;
-                    timeInState = 0;
-                    stateChanged = true;
+					ChangeState(GameState.DRAWING_BALL);
                     break;
                 }
                 break;
@@ -165,9 +163,7 @@ public partial class BingoManager : Node
 				// If its been 4 seconds roll another ball.
                 if (timeInState >= 4)
                 {
-                    currentGameState = GameState.BALL_ROLL;
-                    timeInState = 0;
-					stateChanged = true;
+					ChangeState(GameState.BALL_ROLL);
                     break;
                 }
                 break;
@@ -227,15 +223,18 @@ public partial class BingoManager : Node
                     }
                 }
 				else {
-					currentGameState = GameState.BALL_ROLL;
-                    timeInState = 0;
-                    stateChanged = true;
-                    break;
                 }
                 break;
 		}
 		timeInState += delta;
 	}
+
+	private void ChangeState(GameState state) {
+		previousGameState = currentGameState;
+        currentGameState = state;
+        timeInState = 0;
+        stateChanged = true;
+    }
 
 	public bool CheckBingo(int playerId) { 
 		// Switch over each game type for different bingo checks. 
@@ -359,18 +358,14 @@ public partial class BingoManager : Node
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void BeginGameWithCards() {
-        // Set default game state
-        currentGameState = GameState.CARD_SLIDE_IN;
-        stateChanged = true;
-        timeInState = 0;
+		// Set default game state
+		ChangeState(GameState.CARD_SLIDE_IN);
         generatingCardsPopup.Visible = false;
     }
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void BingoWin(long playerId) {
-        currentGameState = GameState.BINGO;
-        stateChanged = true;
-		timeInState = 0;
+		ChangeState(GameState.BINGO);
 
 		BW_winningPlayerId = playerId;
 
