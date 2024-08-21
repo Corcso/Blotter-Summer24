@@ -305,42 +305,70 @@ public partial class BingoManager : Node
 			case BingoGameType.ROW:
 				return CheckRowBingo(playerId);
 			case BingoGameType.FULL_HOUSE:
-				return false;
+				return CheckFHBingo(playerId);
 			case BingoGameType.THREE_FULL_HOSUE:
-				return false;
+				return Check3FHBingo(playerId);
 		}
 		return false;
 	}
+
+	private bool CheckThisRowBingo(int playerId, int rowIdx) {
+        // Loop over each number in that row
+        // All rows should have 5 numbers so a row of 0s should not be an issue.
+        for (int j = 0; j < playersCards[playerId].numbers.GetLength(1); j++)
+        {
+            // If this number is a 0 ignore it as it is a blank space
+            // If any numbers in that row were not called
+            // Mark the row as not a bingo and stop looping this row
+            if (playersCards[playerId].numbers[rowIdx, j] != 0 && !calledBalls.Contains(playersCards[playerId].numbers[rowIdx, j]))
+            {
+				return false;
+            }
+        }
+        // If we have made it to the end of the loop all number matched and this row is a bingo
+        return true;
+    }
 
 	private bool CheckRowBingo(int playerId) {
 		// Loop over each row
 		for (int i = 0; i < playersCards[playerId].numbers.GetLength(0); i++)
 		{
-			// Loop over each number in that row
-			// Assume the row is a bingo
-			bool rowBingo = true; 
-
-			// All rows should have 5 numbers so a row of 0s should not be an issue.
-
-            for (int j = 0; j < playersCards[playerId].numbers.GetLength(1); j++)
-            {
-				// If this number is a 0 ignore it as it is a blank space
-				// If any numbers in that row were not called
-				// Mark the row as not a bingo and stop looping this row
-                if (playersCards[playerId].numbers[i, j] != 0 && !calledBalls.Contains(playersCards[playerId].numbers[i, j])) {
-					rowBingo = false;
-					break;
-				}
-            }
+			// Check this row is a bingo using the check this bingo row function 
 			// If we have a bingo on this row no need to look further return a bingo
-            if (rowBingo) return true;
-			
+            if (CheckThisRowBingo(playerId, i)) return true;
         }
 		// If no row bingos found return false
 		return false;
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    private bool CheckFHBingo(int playerId)
+    {
+        // Loop over each 3rd row
+        for (int i = 0; i < playersCards[playerId].numbers.GetLength(0); i += 3)
+        {
+            // Check the 3 rows in this box, if all 3 are bingos then we have a full house
+            if (CheckThisRowBingo(playerId, i) && CheckThisRowBingo(playerId, i + 1) && CheckThisRowBingo(playerId, i + 2)) return true;
+        }
+        // If no row bingos found return false
+        return false;
+    }
+
+    private bool Check3FHBingo(int playerId)
+    {
+		// Start a count for the number of full houses
+		int fullHouseCount = 0;
+        // Loop over each 3rd row
+        for (int i = 0; i < playersCards[playerId].numbers.GetLength(0); i += 3)
+        {
+            // Check the 3 rows in this box, if all 3 are bingos then we have a full house
+			// Add 1 to the full house count if we have a full house
+            if (CheckThisRowBingo(playerId, i) && CheckThisRowBingo(playerId, i + 1) && CheckThisRowBingo(playerId, i + 2)) fullHouseCount++;
+        }
+        // If we have 3 full houses or more we have a bingo
+        return fullHouseCount >= 3;
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SetCurrentBall(int ball) {
 		ballToCall = ball;
         // Set the balls text to that ball
