@@ -49,6 +49,7 @@ public partial class BingoManager : Node
     long BW_winningPlayerId;
     Vector2 BW_moveCardPosition;
 	Node2D BW_bingoBoomPopup;
+	Vector2 BW_BallPositionWhenBingoPressed;
 
 	// == New Cards Animation variables
 	Node2D playerCardHolder;
@@ -173,7 +174,9 @@ public partial class BingoManager : Node
 					if (BW_winningPlayerId != Multiplayer.GetUniqueId()) { 
 						BW_moveCardPosition = playersCards[BW_winningPlayerId].Position;
 					}
-				}
+					BW_BallPositionWhenBingoPressed = bingoBall.Position;
+
+                }
 				Vector2 MY_WIN_START_CARD_POSITION = new Vector2(-316, 0);
 				Vector2 MY_WIN_HOLD_CARD_POSITION = new Vector2(-82, 0);
                 Vector2 OTHER_WIN_HOLD_CARD_POSITION = new Vector2(0, -1960);
@@ -196,6 +199,10 @@ public partial class BingoManager : Node
                         playerCardHolder.Position = (Vector2)Tween.InterpolateValue(MY_WIN_START_CARD_POSITION, MY_WIN_HOLD_CARD_POSITION - MY_WIN_START_CARD_POSITION, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                         playerCardHolder.RotationDegrees = (float)Tween.InterpolateValue(0.0f, -35.0f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                         playerCardHolder.Scale = Vector2.One * (float)Tween.InterpolateValue(1f, 0.2f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                    }
+					if(previousGameState == GameState.DRAWING_BALL)
+					{
+						bingoBall.Position = BW_BallPositionWhenBingoPressed.Lerp(END_BALL_POSITION, Mathf.Clamp(((float)timeInState * 2) * ((float)timeInState * 2), 0, 1));
                     }
                 }
 				else if (timeInState <= 2.5f)
@@ -223,6 +230,9 @@ public partial class BingoManager : Node
                     }
                 }
 				else {
+					if(previousGameState == GameState.DRAWING_BALL) ChangeState(GameState.DRAWING_BALL);
+					else ChangeState(GameState.BALL_ROLL);
+					break;
                 }
                 break;
 		}
