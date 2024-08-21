@@ -1,0 +1,1774 @@
+[gd_scene load_steps=5 format=3 uid="uid://clwk2634ogqgh"]
+
+[ext_resource type="Texture2D" uid="uid://dgwxdlo7rtu7g" path="res://Sprites/Bingo Cards/Orange 256x512.png" id="1_ewov2"]
+[ext_resource type="Script" path="res://Scripts/BingoCard.cs" id="2_c5mws"]
+[ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="3_bth04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_60lf3"]
+font = ExtResource("3_bth04")
+font_size = 17
+font_color = Color(0, 0, 0, 1)
+
+[node name="DebugOrangeCard128x256" type="Sprite2D"]
+clip_children = 2
+texture_filter = 1
+texture = ExtResource("1_ewov2")
+script = ExtResource("2_c5mws")
+
+[node name="Row0" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -118.0
+offset_top = -207.0
+offset_right = 102.0
+offset_bottom = 195.0
+
+[node name="Label" type="Label" parent="Row0"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 68.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 124.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 128.0
+offset_right = 152.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 156.0
+offset_right = 180.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 184.0
+offset_right = 208.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 212.0
+offset_right = 236.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Row0"]
+layout_mode = 2
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="Row0"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 12.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label23" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 124.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 48.0
+offset_right = 180.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label26" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="Row0"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Row1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -118.0
+offset_top = -129.0
+offset_right = 102.0
+offset_bottom = 273.0
+
+[node name="Label" type="Label" parent="Row1"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 68.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 124.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 128.0
+offset_right = 152.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 156.0
+offset_right = 180.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 184.0
+offset_right = 208.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 212.0
+offset_right = 236.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Row1"]
+layout_mode = 2
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="Row1"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 12.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label23" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 124.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 48.0
+offset_right = 180.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label26" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="Row1"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Row2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -118.0
+offset_top = -53.0
+offset_right = 102.0
+offset_bottom = 349.0
+
+[node name="Label" type="Label" parent="Row2"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 68.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 124.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 128.0
+offset_right = 152.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 156.0
+offset_right = 180.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 184.0
+offset_right = 208.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 212.0
+offset_right = 236.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Row2"]
+layout_mode = 2
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="Row2"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 12.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label23" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 124.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 48.0
+offset_right = 180.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label26" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="Row2"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Row3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -118.0
+offset_top = 24.0
+offset_right = 102.0
+offset_bottom = 426.0
+
+[node name="Label" type="Label" parent="Row3"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 68.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 124.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 128.0
+offset_right = 152.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 156.0
+offset_right = 180.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 184.0
+offset_right = 208.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 212.0
+offset_right = 236.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Row3"]
+layout_mode = 2
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="Row3"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 12.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label23" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 124.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 48.0
+offset_right = 180.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label26" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="Row3"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Row4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -118.0
+offset_top = 101.0
+offset_right = 102.0
+offset_bottom = 503.0
+
+[node name="Label" type="Label" parent="Row4"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 68.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 124.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 128.0
+offset_right = 152.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 156.0
+offset_right = 180.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 184.0
+offset_right = 208.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 212.0
+offset_right = 236.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Row4"]
+layout_mode = 2
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="Row4"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 12.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label23" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 124.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 48.0
+offset_right = 180.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label26" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="Row4"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Row5" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -118.0
+offset_top = 178.0
+offset_right = 102.0
+offset_bottom = 580.0
+
+[node name="Label" type="Label" parent="Row5"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 68.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 72.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 124.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 128.0
+offset_right = 152.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 156.0
+offset_right = 180.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 184.0
+offset_right = 208.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 212.0
+offset_right = 236.0
+offset_bottom = 24.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Row5"]
+layout_mode = 2
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 48.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="Row5"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 12.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label21" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label22" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label23" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 48.0
+offset_right = 124.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label24" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label25" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 48.0
+offset_right = 180.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label26" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1
+
+[node name="Label27" type="Label" parent="Row5"]
+layout_mode = 2
+offset_left = 212.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 72.0
+size_flags_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_60lf3")
+horizontal_alignment = 1

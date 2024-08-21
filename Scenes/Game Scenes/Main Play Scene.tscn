@@ -1,0 +1,135 @@
+[gd_scene load_steps=17 format=3 uid="uid://xr5l5vfgglbj"]
+
+[ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
+[ext_resource type="Texture2D" uid="uid://cv2i20f56c5js" path="res://Sprites/Pens/Purple Pen Blot.png" id="3_pictx"]
+[ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="4_m4kv1"]
+[ext_resource type="Script" path="res://Scripts/BingoManager.cs" id="4_umn3p"]
+[ext_resource type="Texture2D" uid="uid://d3oc1scu57mqd" path="res://Sprites/Balls/Red.png" id="5_tdk3s"]
+[ext_resource type="Texture2D" uid="uid://dggf882jelky0" path="res://Sprites/Balls/Shine.png" id="6_2qg5l"]
+[ext_resource type="Texture2D" uid="uid://1lw1v4t7by37" path="res://Sprites/Pens/Purple Pen.png" id="7_xlwl1"]
+[ext_resource type="Script" path="res://Scripts/Pen.cs" id="8_fnnak"]
+[ext_resource type="Texture2D" uid="uid://tp8hm8muyaqt" path="res://Sprites/UI/Bingo Button.png" id="8_jodr4"]
+[ext_resource type="Texture2D" uid="uid://bpvkvtusp5n3m" path="res://Sprites/Popups/BingoText.png" id="9_rfrmu"]
+[ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="9_yhg2y"]
+[ext_resource type="Texture2D" uid="uid://lg2fq4tddevb" path="res://Sprites/UI/BlueMenu 512x256.png" id="10_7l2cr"]
+[ext_resource type="Script" path="res://Scenes/Game Scenes/BingoButton.cs" id="11_n32g3"]
+[ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="11_nejf4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
+font = ExtResource("4_m4kv1")
+font_size = 24
+font_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnfay"]
+font = ExtResource("9_yhg2y")
+font_size = 64
+outline_size = 8
+outline_color = Color(1, 0.517647, 0.129412, 1)
+
+[node name="Node2D" type="Node2D"]
+texture_filter = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BingoManager" type="Node" parent="." node_paths=PackedStringArray("bingoBall")]
+script = ExtResource("4_umn3p")
+bingoBall = NodePath("../Ball")
+bingoCardScene = ExtResource("1_8gael")
+
+[node name="Player Bingo Card" type="Node2D" parent="."]
+position = Vector2(-316, -654)
+
+[node name="PLACEHOLDER" parent="Player Bingo Card" instance=ExtResource("1_8gael")]
+visible = false
+
+[node name="Ball" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(254, -498)
+scale = Vector2(4.6, 4.6)
+
+[node name="Inner Rotate" type="Node2D" parent="Ball"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/Inner Rotate"]
+texture = ExtResource("5_tdk3s")
+
+[node name="Number" type="Label" parent="Ball/Inner Rotate"]
+offset_left = -19.5652
+offset_top = -17.1739
+offset_right = 20.4348
+offset_bottom = 16.8261
+text = "13"
+label_settings = SubResource("LabelSettings_c1sbt")
+horizontal_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ball"]
+texture = ExtResource("6_2qg5l")
+
+[node name="My Pen" type="Sprite2D" parent="."]
+position = Vector2(-176, -251)
+rotation = 1.13446
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("7_xlwl1")
+offset = Vector2(0, -25)
+script = ExtResource("8_fnnak")
+blotTexture = ExtResource("3_pictx")
+
+[node name="Other Players Cards" type="Node2D" parent="."]
+position = Vector2(500, 0)
+rotation = -1.57079
+scale = Vector2(0.4, 0.4)
+
+[node name="Other Card" parent="Other Players Cards" instance=ExtResource("1_8gael")]
+visible = false
+position = Vector2(500, 0)
+
+[node name="Other Card2" parent="Other Players Cards" instance=ExtResource("1_8gael")]
+visible = false
+
+[node name="Other Card3" parent="Other Players Cards" instance=ExtResource("1_8gael")]
+visible = false
+position = Vector2(-500, 0)
+
+[node name="Label" type="Label" parent="Other Players Cards"]
+visible = false
+offset_left = 202.498
+offset_top = -255.001
+offset_right = 582.498
+offset_bottom = -168.001
+rotation = 1.5708
+text = "Player"
+label_settings = SubResource("LabelSettings_vnfay")
+
+[node name="Bingo Button" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = 180.0
+offset_right = 128.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("8_jodr4")
+script = ExtResource("11_n32g3")
+
+[node name="Bingo Boom Text" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_rfrmu")
+
+[node name="Generating Cards Popup" type="Sprite2D" parent="."]
+texture = ExtResource("10_7l2cr")
+
+[node name="Label" type="Label" parent="Generating Cards Popup"]
+offset_left = -230.0
+offset_top = -103.0
+offset_right = 231.0
+offset_bottom = 96.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 72
+text = "Generating
+Bingo Cards"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Bingo Button" to="BingoManager" method="_on_bingo_button_pressed"]

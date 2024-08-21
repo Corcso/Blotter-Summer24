@@ -1,0 +1,303 @@
+[gd_scene load_steps=10 format=3 uid="uid://crjc5onjn1iy7"]
+
+[ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
+[ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
+[ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="2_e4n4j"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/MultiplayerManager.cs" id="2_fd32g"]
+[ext_resource type="Texture2D" uid="uid://dr7swhe5dkika" path="res://Sprites/UI/Blotter Large Logo.png" id="2_g2wpm"]
+[ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="2_xkdvm"]
+[ext_resource type="Texture2D" uid="uid://dx7jlku6oxe12" path="res://Sprites/UI/PurpleMenu 512x512.png" id="6_akt68"]
+[ext_resource type="Script" path="res://Scripts/MainMenuManager.cs" id="8_ajk4h"]
+[ext_resource type="Texture2D" uid="uid://bikxihxgmtims" path="res://Sprites/UI/RedMenu 512x128.png" id="9_p2o5t"]
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cyup8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = -53.0
+offset_right = 1102.0
+offset_bottom = 203.0
+texture = ExtResource("2_g2wpm")
+
+[node name="Host Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -120.0
+offset_right = 207.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "Host Game"
+
+[node name="Open Join Menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -5.0
+offset_right = 207.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "Join Game"
+
+[node name="Join Menu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Join Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -156.0
+offset_right = 767.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xkdvm")
+
+[node name="Address" type="LineEdit" parent="Join Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -239.0
+offset_top = -46.0
+offset_right = 239.0
+offset_bottom = 10.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_4ykm6")
+theme_override_font_sizes/font_size = 38
+text = "127.0.0.1"
+placeholder_text = "XXX.XXX.XXX.XXX"
+alignment = 1
+max_length = 15
+caret_blink = true
+
+[node name="Join Button" type="Button" parent="Join Menu"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 32.0
+offset_right = 86.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("2_e4n4j")
+theme_override_font_sizes/font_size = 28
+text = "Connect"
+
+[node name="Label" type="Label" parent="Join Menu"]
+layout_mode = 0
+offset_left = -156.0
+offset_top = -131.0
+offset_right = 202.0
+offset_bottom = -43.0
+theme_override_font_sizes/font_size = 65
+text = "Join Game"
+horizontal_alignment = 1
+
+[node name="Lobby" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Lobby"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_akt68")
+
+[node name="Label" type="Label" parent="Lobby"]
+layout_mode = 0
+offset_left = -138.0
+offset_top = -241.0
+offset_right = 135.0
+offset_bottom = -143.0
+theme_override_font_sizes/font_size = 72
+text = "Lounge"
+
+[node name="Grid" type="GridContainer" parent="Lobby"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -138.0
+offset_right = 160.5
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Lobby/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Player"
+horizontal_alignment = 1
+
+[node name="Play Button" type="Button" parent="Lobby"]
+layout_mode = 0
+offset_left = -99.0
+offset_top = 138.0
+offset_right = 98.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 72
+text = "PLAY"
+
+[node name="Waiting On Host" type="Label" parent="Lobby"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 179.0
+offset_right = 412.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 48
+text = "Waiting On Host"
+
+[node name="Leave Lobby" type="Button" parent="Lobby"]
+layout_mode = 0
+offset_left = -247.0
+offset_top = -269.0
+offset_right = -187.0
+offset_bottom = -167.0
+theme_override_colors/font_color = Color(0.92549, 0.4, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0.760784, 0.219608, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.568627, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 72
+text = "X"
+flat = true
+
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox")]
+script = ExtResource("2_fd32g")
+address = NodePath("../Join Menu/Address")
+playersListGrid = NodePath("../Lobby/Grid")
+lobbyMenu = NodePath("../Lobby")
+playerNameInput = NodePath("../Name Input")
+disconnectBox = NodePath("../Disconnected Box")
+
+[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox")]
+script = ExtResource("8_ajk4h")
+joinMenu = NodePath("../Join Menu")
+disconnectBox = NodePath("../Disconnected Box")
+
+[node name="Name Input" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 501.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 52
+placeholder_text = "Enter Name "
+flat = true
+
+[node name="Disconnected Box" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Disconnected Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_p2o5t")
+
+[node name="Label" type="Label" parent="Disconnected Box"]
+layout_mode = 0
+offset_left = -148.0
+offset_top = -15.0
+offset_right = 264.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 56
+text = "Disconnected!"
+
+[node name="Close Disconnect Box" type="Button" parent="Disconnected Box"]
+layout_mode = 0
+offset_left = -223.0
+offset_top = -29.0
+offset_right = -163.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0.92549, 0.4, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0.760784, 0.219608, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.568627, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 72
+text = "X"
+flat = true
+
+[connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
+[connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]
+[connection signal="pressed" from="Join Menu/Join Button" to="Multiplayer Manager" method="_on_join_button_pressed"]
+[connection signal="pressed" from="Lobby/Play Button" to="Multiplayer Manager" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Disconnected Box/Close Disconnect Box" to="GUI Menu Manager" method="_on_close_disconnect_box_pressed"]
