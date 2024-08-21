@@ -84,6 +84,9 @@ position = Vector2(500, 0)
 
 [node name="Other Card2" parent="Other Players Cards" instance=ExtResource("1_8gael")]
 visible = false
+position = Vector2(0, -1460)
+rotation = 0.959931
+scale = Vector2(3, 3)
 
 [node name="Other Card3" parent="Other Players Cards" instance=ExtResource("1_8gael")]
 visible = false

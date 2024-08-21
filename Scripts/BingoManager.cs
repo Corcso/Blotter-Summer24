@@ -178,17 +178,28 @@ public partial class BingoManager : Node
 						BW_moveCardPosition = playersCards[BW_winningPlayerId].Position;
 					}
 				}
-				if (timeInState <= 0.5f)
+				Vector2 MY_WIN_START_CARD_POSITION = new Vector2(-316, 0);
+				Vector2 MY_WIN_HOLD_CARD_POSITION = new Vector2(-82, 0);
+                Vector2 OTHER_WIN_HOLD_CARD_POSITION = new Vector2(0, -1960);
+				Vector2 MY_LOSS_HOLD_CARD_POSITION = new Vector2(-750, 0);
+                if (timeInState <= 0.5f)
 				{
 					//BW_bingoBoomPopup.Rotation = Mathf.Lerp(0, 2 * Mathf.Pi, (float)timeInState * 2);
 					BW_bingoBoomPopup.Rotation = (float)Tween.InterpolateValue(0.0f, 2 * Mathf.Pi, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     BW_bingoBoomPopup.Scale = Vector2.One * (float)Tween.InterpolateValue(0.0f, 1.0f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
 
-					if (BW_winningPlayerId != Multiplayer.GetUniqueId())
+                    otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(500, 0), new Vector2(200, 0), timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                    if (BW_winningPlayerId != Multiplayer.GetUniqueId())
 					{
-						playersCards[BW_winningPlayerId].Position = (Vector2)Tween.InterpolateValue(BW_moveCardPosition, new Vector2(0, -1460) - BW_moveCardPosition, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
-                        playersCards[BW_winningPlayerId].RotationDegrees = (float)Tween.InterpolateValue(0.0f, 55.0f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
-                        playersCards[BW_winningPlayerId].Scale = Vector2.One * (float)Tween.InterpolateValue(1f, 2f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playerCardHolder.Position = (Vector2)Tween.InterpolateValue(MY_WIN_START_CARD_POSITION, MY_LOSS_HOLD_CARD_POSITION - MY_WIN_START_CARD_POSITION, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playersCards[BW_winningPlayerId].Position = (Vector2)Tween.InterpolateValue(BW_moveCardPosition, OTHER_WIN_HOLD_CARD_POSITION - BW_moveCardPosition, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+						playersCards[BW_winningPlayerId].RotationDegrees = (float)Tween.InterpolateValue(0.0f, 55.0f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+						playersCards[BW_winningPlayerId].Scale = Vector2.One * (float)Tween.InterpolateValue(1f, 2f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+					}
+					else { 
+                        playerCardHolder.Position = (Vector2)Tween.InterpolateValue(MY_WIN_START_CARD_POSITION, MY_WIN_HOLD_CARD_POSITION - MY_WIN_START_CARD_POSITION, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playerCardHolder.RotationDegrees = (float)Tween.InterpolateValue(0.0f, -35.0f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playerCardHolder.Scale = Vector2.One * (float)Tween.InterpolateValue(1f, 0.2f, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     }
                 }
 				else if (timeInState <= 2.5f)
@@ -199,11 +210,20 @@ public partial class BingoManager : Node
 				{
                     BW_bingoBoomPopup.Rotation = (float)Tween.InterpolateValue(2 * Mathf.Pi, 4 * Mathf.Pi, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     BW_bingoBoomPopup.Scale = Vector2.One * (float)Tween.InterpolateValue(1.0f, -1.0f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
-					if (BW_winningPlayerId != Multiplayer.GetUniqueId())
+
+                    otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(700, 0), new Vector2(-200, 0), timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                    if (BW_winningPlayerId != Multiplayer.GetUniqueId())
 					{
-						playersCards[BW_winningPlayerId].Position = (Vector2)Tween.InterpolateValue(new Vector2(0, -1460), new Vector2(0, 1460) + BW_moveCardPosition, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playerCardHolder.Position = (Vector2)Tween.InterpolateValue(MY_LOSS_HOLD_CARD_POSITION, MY_WIN_START_CARD_POSITION - MY_LOSS_HOLD_CARD_POSITION, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playersCards[BW_winningPlayerId].Position = (Vector2)Tween.InterpolateValue(OTHER_WIN_HOLD_CARD_POSITION, -OTHER_WIN_HOLD_CARD_POSITION + BW_moveCardPosition, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                         playersCards[BW_winningPlayerId].RotationDegrees = (float)Tween.InterpolateValue(55.0f, -55.0f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                         playersCards[BW_winningPlayerId].Scale = Vector2.One * (float)Tween.InterpolateValue(3f, -2f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                    }
+                    else
+                    {
+                        playerCardHolder.Position = (Vector2)Tween.InterpolateValue(MY_WIN_HOLD_CARD_POSITION, MY_WIN_START_CARD_POSITION - MY_WIN_HOLD_CARD_POSITION, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playerCardHolder.RotationDegrees = (float)Tween.InterpolateValue(-35.0f, 35.0f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                        playerCardHolder.Scale = Vector2.One * (float)Tween.InterpolateValue(1.2f, -0.2f, timeInState - 2.5f, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     }
                 }
 				else {
