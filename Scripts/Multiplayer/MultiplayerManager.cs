@@ -50,9 +50,9 @@ public partial class MultiplayerManager : Node
         ENetConnection eNetConnection = peer.Host;
         peer.Close();
         eNetConnection.Destroy();
-        
         Multiplayer.MultiplayerPeer = null;
         peer = null;
+
         // Close the lobby if it is open
         lobbyMenu.Visible = false;
         // Also delete all player names
