@@ -13,6 +13,10 @@ public partial class BingoManager : Node
 	GameState currentGameState;
 	GameState previousGameState;
 	bool stateChanged;
+
+	// Array 3 long for the winners
+	long[] winnerIds = new long[3];
+
 	// Used for the animations
 	double timeInState;
 
@@ -61,6 +65,9 @@ public partial class BingoManager : Node
 	// == New Game Type Animation variables
 	Node2D newGameTypePopupBox;
 
+	// == Game Over Animation variables
+	Node2D gameOverPopupBox;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -97,6 +104,9 @@ public partial class BingoManager : Node
 
         // Setup new game type popup
         newGameTypePopupBox = GetParent().GetNode<Node2D>("./New Game Type Popup");
+
+        // Setup game over popup
+        gameOverPopupBox = GetParent().GetNode<Node2D>("./Game Over Popup");
 
         // Load font for player names
         kalinaBold = ResourceLoader.Load<FontFile>("res://Fonts/Kalina/Kalnia-Bold.ttf");
@@ -252,7 +262,8 @@ public partial class BingoManager : Node
 				else if (timeInState > 3.0f) {
 					//if(previousGameState == GameState.DRAWING_BALL) ChangeState(GameState.DRAWING_BALL);
 					//else ChangeState(GameState.BALL_ROLL);
-					ChangeState(GameState.NEW_GAME_TYPE);
+					if (currentGameType == BingoGameType.THREE_FULL_HOSUE) ChangeState(GameState.GAME_END);
+					else ChangeState(GameState.NEW_GAME_TYPE);
 					break;
                 }
                 break;
@@ -286,6 +297,38 @@ public partial class BingoManager : Node
 					ChangeState(GameState.BALL_ROLL);
 					newGameTypePopupBox.Hide();
 				}
+                break;
+			case GameState.GAME_END:
+                POPUP_START_POSITION = new Vector2(0, -650);
+                POPUP_HOLD_POSITION = new Vector2(0, 0);
+                if (stateChanged)
+                {
+                    stateChanged = false;
+					// Set winners names
+					gameOverPopupBox.GetNode<Label>("./Row Winner Name").Text = GameManager.players[winnerIds[0]].name;
+					gameOverPopupBox.GetNode<Label>("./FH Winner Name").Text = GameManager.players[winnerIds[1]].name;
+					gameOverPopupBox.GetNode<Label>("./TFH Winner Name").Text = GameManager.players[winnerIds[2]].name;
+
+					// Make the box visible
+					gameOverPopupBox.Show();
+
+					// Make the waiting on host visible if not host, or host buttons visible if are. 
+					if (Multiplayer.IsServer())
+					{
+						gameOverPopupBox.GetNode<Control>("./Waiting For Host").Hide();
+						gameOverPopupBox.GetNode<Control>("./Play Again Button").Show();
+						gameOverPopupBox.GetNode<Control>("./Exit Game Button").Show();
+					}
+					else {
+                        gameOverPopupBox.GetNode<Control>("./Waiting For Host").Show();
+                        gameOverPopupBox.GetNode<Control>("./Play Again Button").Hide();
+                        gameOverPopupBox.GetNode<Control>("./Exit Game Button").Hide();
+                    }
+                }
+                if (timeInState <= 0.7f)
+                {
+                    gameOverPopupBox.Position = (Vector2)Tween.InterpolateValue(POPUP_START_POSITION, POPUP_HOLD_POSITION - POPUP_START_POSITION, timeInState, 0.7, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                }
                 break;
 		}
 		timeInState += delta;
@@ -461,6 +504,9 @@ public partial class BingoManager : Node
 
 		// Hide the bingo button if I am not the winner too. 
 		if (playerId != Multiplayer.GetUniqueId()) bingoButton.HideBingoButton(3);
+
+		// Add that player to the winners list
+		winnerIds[(int)currentGameType] = playerId;
     }
 
 	public void _on_bingo_button_pressed() {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=19 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
 [ext_resource type="Texture2D" uid="uid://cv2i20f56c5js" path="res://Sprites/Pens/Purple Pen Blot.png" id="3_pictx"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://lg2fq4tddevb" path="res://Sprites/UI/BlueMenu 512x256.png" id="10_7l2cr"]
 [ext_resource type="Script" path="res://Scenes/Game Scenes/BingoButton.cs" id="11_n32g3"]
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="11_nejf4"]
+[ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="15_27jtk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
 font = ExtResource("4_m4kv1")
@@ -25,6 +26,10 @@ font = ExtResource("9_yhg2y")
 font_size = 64
 outline_size = 8
 outline_color = Color(1, 0.517647, 0.129412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_04iry"]
+font = ExtResource("9_yhg2y")
+font_size = 76
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -133,6 +138,7 @@ label_settings = SubResource("LabelSettings_vnfay")
 horizontal_alignment = 2
 
 [node name="Generating Cards Popup" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("10_7l2cr")
 
 [node name="Label" type="Label" parent="Generating Cards Popup"]
@@ -160,5 +166,103 @@ theme_override_font_sizes/font_size = 72
 text = "Now Playing For
 Full House!"
 horizontal_alignment = 1
+
+[node name="Game Over Popup" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -21.785)
+texture = ExtResource("15_27jtk")
+
+[node name="Label" type="Label" parent="Game Over Popup"]
+offset_left = -242.0
+offset_top = -241.0
+offset_right = 243.0
+offset_bottom = -42.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 72
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_04iry")
+horizontal_alignment = 1
+
+[node name="Row Winner Name" type="Label" parent="Game Over Popup"]
+offset_left = 7.0
+offset_top = -106.0
+offset_right = 493.0
+offset_bottom = -19.0
+text = "Player12"
+label_settings = SubResource("LabelSettings_vnfay")
+
+[node name="FH Winner Name" type="Label" parent="Game Over Popup"]
+offset_left = 5.0
+offset_top = -18.0
+offset_right = 491.0
+offset_bottom = 69.0
+text = "Host17451"
+label_settings = SubResource("LabelSettings_vnfay")
+
+[node name="TFH Winner Name" type="Label" parent="Game Over Popup"]
+offset_left = 6.0
+offset_top = 76.0
+offset_right = 492.0
+offset_bottom = 163.0
+text = "Host17451"
+label_settings = SubResource("LabelSettings_vnfay")
+
+[node name="Row Winner Text" type="Label" parent="Game Over Popup"]
+offset_left = -488.0
+offset_top = -118.0
+offset_right = -2.0
+offset_bottom = -20.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 72
+text = "Row:"
+horizontal_alignment = 2
+
+[node name="FH Winner Text" type="Label" parent="Game Over Popup"]
+offset_left = -490.0
+offset_top = -29.0
+offset_right = -4.0
+offset_bottom = 69.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 72
+text = "Full House:"
+horizontal_alignment = 2
+
+[node name="TFH Winner Text" type="Label" parent="Game Over Popup"]
+offset_left = -509.0
+offset_top = 65.0
+offset_right = 15.0
+offset_bottom = 163.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 72
+text = "3 Full House:"
+horizontal_alignment = 1
+
+[node name="Waiting For Host" type="Label" parent="Game Over Popup"]
+offset_left = -315.0
+offset_top = 178.0
+offset_right = 316.0
+offset_bottom = 276.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 48
+text = "Waiting For Host"
+horizontal_alignment = 1
+
+[node name="Play Again Button" type="Button" parent="Game Over Popup"]
+offset_left = 15.0
+offset_top = 167.0
+offset_right = 287.0
+offset_bottom = 237.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 48
+text = "Play Again"
+
+[node name="Exit Game Button" type="Button" parent="Game Over Popup"]
+offset_left = -288.0
+offset_top = 167.0
+offset_right = -16.0
+offset_bottom = 237.0
+theme = ExtResource("11_nejf4")
+theme_override_font_sizes/font_size = 48
+text = "Exit Game"
 
 [connection signal="pressed" from="Bingo Button" to="BingoManager" method="_on_bingo_button_pressed"]
