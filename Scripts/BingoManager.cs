@@ -15,7 +15,7 @@ public partial class BingoManager : Node
 	bool stateChanged;
 
 	// Array 3 long for the winners
-	long[] winnerIds = new long[3];
+	long[] winnerIds;
 
 	// Used for the animations
 	double timeInState;
@@ -79,8 +79,11 @@ public partial class BingoManager : Node
 		calledBalls = new List<int>();
 		for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
 
-		// Setup the players cards
-		playersCards = new Godot.Collections.Dictionary<long, BingoCard>();
+        // Setup winners array 
+        winnerIds = new long[3];
+
+        // Setup the players cards
+        playersCards = new Godot.Collections.Dictionary<long, BingoCard>();
 
         // Set default game state
         currentGameState = GameState.GENERATING_CARDS;

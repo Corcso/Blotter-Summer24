@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=20 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
 [ext_resource type="Texture2D" uid="uid://cv2i20f56c5js" path="res://Sprites/Pens/Purple Pen Blot.png" id="3_pictx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scenes/Game Scenes/BingoButton.cs" id="11_n32g3"]
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="11_nejf4"]
 [ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="15_27jtk"]
+[ext_resource type="Script" path="res://Scripts/Individual Node Scripts/GameOverButtons.cs" id="16_p43k4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
 font = ExtResource("4_m4kv1")
@@ -171,6 +172,7 @@ horizontal_alignment = 1
 visible = false
 position = Vector2(0, -21.785)
 texture = ExtResource("15_27jtk")
+script = ExtResource("16_p43k4")
 
 [node name="Label" type="Label" parent="Game Over Popup"]
 offset_left = -242.0
@@ -266,3 +268,5 @@ theme_override_font_sizes/font_size = 48
 text = "Exit Game"
 
 [connection signal="pressed" from="Bingo Button" to="BingoManager" method="_on_bingo_button_pressed"]
+[connection signal="pressed" from="Game Over Popup/Play Again Button" to="Game Over Popup" method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="Game Over Popup/Exit Game Button" to="Game Over Popup" method="_on_exit_game_button_pressed"]

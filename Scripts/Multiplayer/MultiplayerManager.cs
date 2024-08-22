@@ -47,7 +47,10 @@ public partial class MultiplayerManager : Node
         disconnectBox.Visible = true;
         // Delete multiplayer peer
         GD.Print("ID CALLING DSETROY " + Multiplayer.GetUniqueId());
-        peer.Host.Destroy();
+        ENetConnection eNetConnection = peer.Host;
+        peer.Close();
+        eNetConnection.Destroy();
+        
         Multiplayer.MultiplayerPeer = null;
         peer = null;
         // Close the lobby if it is open
