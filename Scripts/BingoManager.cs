@@ -115,7 +115,21 @@ public partial class BingoManager : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		switch (currentGameState)
+        // Constants for animation
+        // Card position constants
+        Vector2 MY_WIN_START_CARD_POSITION = new Vector2(-316, 0);
+        Vector2 MY_WIN_HOLD_CARD_POSITION = new Vector2(-82, 0);
+        Vector2 OTHER_WIN_HOLD_CARD_POSITION = new Vector2(0, -1960);
+        Vector2 MY_LOSS_HOLD_CARD_POSITION = new Vector2(-750, 0);
+        // Text position constants
+        Vector2 BINGO_BOOM_START_POSITION = new Vector2(61, 565);
+        Vector2 BINGO_BOOM_HOLD_POSITION = new Vector2(-308, 39);
+        Vector2 BINGO_BOOM_END_POSITION = new Vector2(-811, -679);
+        Vector2 PLAYER_NAME_BINGO_BOOM_START_POSITION = new Vector2(-430, -922);
+        Vector2 PLAYER_NAME_BINGO_BOOM_HOLD_POSITION = new Vector2(-51, -381);
+        Vector2 PLAYER_NAME_BINGO_BOOM_END_POSITION = new Vector2(464, 354);
+        // Switch over game state
+        switch (currentGameState)
 		{
 			case GameState.GENERATING_CARDS:
 				if (stateChanged) {
@@ -196,18 +210,6 @@ public partial class BingoManager : Node
 					BW_playerNameBoomText.Text = GameManager.players[BW_winningPlayerId].name;
 
                 }
-				// Card position constants
-				Vector2 MY_WIN_START_CARD_POSITION = new Vector2(-316, 0);
-				Vector2 MY_WIN_HOLD_CARD_POSITION = new Vector2(-82, 0);
-                Vector2 OTHER_WIN_HOLD_CARD_POSITION = new Vector2(0, -1960);
-				Vector2 MY_LOSS_HOLD_CARD_POSITION = new Vector2(-750, 0);
-				// Text position constants
-				Vector2 BINGO_BOOM_START_POSITION = new Vector2(61, 565);
-				Vector2 BINGO_BOOM_HOLD_POSITION = new Vector2(-308, 39);
-				Vector2 BINGO_BOOM_END_POSITION = new Vector2(-811, -679);
-                Vector2 PLAYER_NAME_BINGO_BOOM_START_POSITION = new Vector2(-430, -922);
-                Vector2 PLAYER_NAME_BINGO_BOOM_HOLD_POSITION = new Vector2(-51, -381);
-                Vector2 PLAYER_NAME_BINGO_BOOM_END_POSITION = new Vector2(464, 354);
                 if (timeInState <= 0.5f)
 				{
 					
@@ -327,7 +329,15 @@ public partial class BingoManager : Node
                 }
                 if (timeInState <= 0.7f)
                 {
+					// Move the popup box in
                     gameOverPopupBox.Position = (Vector2)Tween.InterpolateValue(POPUP_START_POSITION, POPUP_HOLD_POSITION - POPUP_START_POSITION, timeInState, 0.7, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+
+                    // Move the bingo cards out the way
+                    playerCardHolder.Position = (Vector2)Tween.InterpolateValue(MY_WIN_START_CARD_POSITION, MY_LOSS_HOLD_CARD_POSITION - MY_WIN_START_CARD_POSITION, timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                    otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(500, 0), new Vector2(200, 0), timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+
+					// Hide the bingo button 
+					bingoButton.HideBingoButton();
                 }
                 break;
 		}
