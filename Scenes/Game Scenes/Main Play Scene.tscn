@@ -57,14 +57,14 @@ position = Vector2(254, -498)
 [node name="Inner Rotate" type="Node2D" parent="Ball"]
 
 [node name="Ball Background" type="Sprite2D" parent="Ball/Inner Rotate"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.223529, 0.364706, 0.756863, 1)
 texture = ExtResource("3_mqpsl")
 
 [node name="Ball White" type="Sprite2D" parent="Ball/Inner Rotate"]
 texture = ExtResource("4_wy4c5")
 
 [node name="Ball Ring" type="Sprite2D" parent="Ball/Inner Rotate"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.223529, 0.364706, 0.756863, 1)
 texture = ExtResource("5_cfwfn")
 
 [node name="Number" type="Label" parent="Ball/Inner Rotate"]

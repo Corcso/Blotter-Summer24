@@ -169,6 +169,20 @@ public partial class BingoManager : Node
 						} while (calledBalls.Contains(ballToCall));
 						Rpc("SetCurrentBall", ballToCall);
 					}
+					int ballColourChoice = rng.RandiRange(0, 5);
+                    Color ballColour = new Color(1, 0, 0); // Initialse as red but this will be overwritten
+					switch (ballColourChoice) {
+						case 0: ballColour = new Color(1, 0, 0); break; // Red
+                        case 1: ballColour = new Color(0, 0.76f, 0); break; // Green
+                        case 2: ballColour = new Color(0, 0.7f, 0.7f); break; // Cyan/Teal
+                        case 3: ballColour = new Color(0.85f, 0.7f, 0); break; // Yellow
+                        case 4: ballColour = new Color(0.66f, 0, 0.85f); break; // Purple
+                        case 5: ballColour = new Color(0.22f, 0.36f, 0.75f); break; // Blue
+                    }
+					bingoBallRotation.GetNode<Sprite2D>("./Ball Background").Modulate = ballColour;
+					bingoBallRotation.GetNode<Sprite2D>("./Ball Ring").Modulate = ballColour;
+
+					
 					
                 }
                 if (timeInState >= 2)
