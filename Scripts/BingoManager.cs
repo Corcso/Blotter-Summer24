@@ -189,7 +189,7 @@ public partial class BingoManager : Node
 				}
 				// Animate the ball into position
                 bingoBall.Position = START_BALL_POSITION.Lerp(HANG_BALL_POSITION, Mathf.Clamp((float)timeInState, 0, 1));
-				bingoBall.Scale = Vector2.One * Mathf.Lerp(0, 4.6f, Mathf.Clamp((float)timeInState, 0, 1));
+				bingoBall.Scale = Vector2.One * Mathf.Lerp(0, 1.0f, Mathf.Clamp((float)timeInState, 0, 1));
 				bingoBallRotation.Rotation = Mathf.Sin(2.0f * (float)timeInState) * 0.4f;
 				// Let the ball hang then fall on the third second
 				if (timeInState >= 3) {

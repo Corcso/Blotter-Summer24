@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=22 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
+[ext_resource type="Texture2D" uid="uid://b6nw1a2ubikk0" path="res://Sprites/Balls/BallV2 Background.png" id="3_mqpsl"]
 [ext_resource type="Texture2D" uid="uid://cv2i20f56c5js" path="res://Sprites/Pens/Purple Pen Blot.png" id="3_pictx"]
 [ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="4_m4kv1"]
 [ext_resource type="Script" path="res://Scripts/BingoManager.cs" id="4_umn3p"]
-[ext_resource type="Texture2D" uid="uid://d3oc1scu57mqd" path="res://Sprites/Balls/Red.png" id="5_tdk3s"]
-[ext_resource type="Texture2D" uid="uid://dggf882jelky0" path="res://Sprites/Balls/Shine.png" id="6_2qg5l"]
+[ext_resource type="Texture2D" uid="uid://dmrpv8ndfrjf" path="res://Sprites/Balls/BallV2 White.png" id="4_wy4c5"]
+[ext_resource type="Texture2D" uid="uid://crpdeq2tyxapb" path="res://Sprites/Balls/BallV2 Ring.png" id="5_cfwfn"]
+[ext_resource type="Texture2D" uid="uid://ckbo8j4o2h1xu" path="res://Sprites/Balls/BallV2 Shine.png" id="7_h5e82"]
 [ext_resource type="Texture2D" uid="uid://1lw1v4t7by37" path="res://Sprites/Pens/Purple Pen.png" id="7_xlwl1"]
 [ext_resource type="Script" path="res://Scripts/Pen.cs" id="8_fnnak"]
 [ext_resource type="Texture2D" uid="uid://tp8hm8muyaqt" path="res://Sprites/UI/Bingo Button.png" id="8_jodr4"]
@@ -19,7 +21,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
 font = ExtResource("4_m4kv1")
-font_size = 24
+font_size = 114
 font_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vnfay"]
@@ -51,24 +53,31 @@ visible = false
 [node name="Ball" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(254, -498)
-scale = Vector2(4.6, 4.6)
 
 [node name="Inner Rotate" type="Node2D" parent="Ball"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball/Inner Rotate"]
-texture = ExtResource("5_tdk3s")
+[node name="Ball Background" type="Sprite2D" parent="Ball/Inner Rotate"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_mqpsl")
+
+[node name="Ball White" type="Sprite2D" parent="Ball/Inner Rotate"]
+texture = ExtResource("4_wy4c5")
+
+[node name="Ball Ring" type="Sprite2D" parent="Ball/Inner Rotate"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5_cfwfn")
 
 [node name="Number" type="Label" parent="Ball/Inner Rotate"]
-offset_left = -19.5652
-offset_top = -17.1739
-offset_right = 20.4348
-offset_bottom = 16.8261
+offset_left = -60.0
+offset_top = -81.0
+offset_right = 62.0
+offset_bottom = 74.0
 text = "13"
 label_settings = SubResource("LabelSettings_c1sbt")
 horizontal_alignment = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="Ball"]
-texture = ExtResource("6_2qg5l")
+[node name="Ball Shine" type="Sprite2D" parent="Ball"]
+texture = ExtResource("7_h5e82")
 
 [node name="My Pen" type="Sprite2D" parent="."]
 position = Vector2(-176, -251)
