@@ -7,7 +7,7 @@ using System.Linq;
 public partial class BingoManager : Node
 {
 	// Enum for game state
-	public enum GameState { GENERATING_CARDS, CARD_SLIDE_IN, BALL_ROLL, DRAWING_BALL, BINGO, NEW_GAME_TYPE, GAME_END };
+	public enum GameState { GENERATING_CARDS, CARD_SLIDE_IN, BALL_ROLL, DRAWING_BALL, AFTER_BALL_SYNC, BINGO, NEW_GAME_TYPE, GAME_END };
 
 	// Current game state
 	GameState currentGameState;
@@ -22,6 +22,11 @@ public partial class BingoManager : Node
 
 	// RNG for ball selection
 	RandomNumberGenerator rng = new RandomNumberGenerator();
+
+	// Sync count recieved 
+	// This is a count which is increased from each user of if they have hit the end of the ball draw
+	// This is so all ball draws happen at the same time.
+	int syncCount; 
 
 	// == Bingo Ball Stuff ==
 	[Export] Node2D bingoBall;
@@ -81,6 +86,8 @@ public partial class BingoManager : Node
 
         // Setup winners array 
         winnerIds = new long[3];
+
+		// Current sync count is 0
 
         // Setup the players cards
         playersCards = new Godot.Collections.Dictionary<long, BingoCard>();
@@ -150,7 +157,8 @@ public partial class BingoManager : Node
                 otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(700, 0), new Vector2(-200, 0), timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
                 bingoButton.Position = (Vector2)Tween.InterpolateValue(new Vector2(-128, 380), new Vector2(0, -200), timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
 				if (timeInState >= 0.75) {
-					ChangeState(GameState.BALL_ROLL);
+					// Sync up first before starting
+					ChangeState(GameState.AFTER_BALL_SYNC);
                     break;
                 }
                 break;
@@ -213,7 +221,20 @@ public partial class BingoManager : Node
 				// If its been 4 seconds roll another ball.
                 if (timeInState >= 4)
                 {
-					ChangeState(GameState.BALL_ROLL);
+					ChangeState(GameState.AFTER_BALL_SYNC);
+                    break;
+                }
+                break;
+			case GameState.AFTER_BALL_SYNC:
+				// When we hit the after ball sync send our RPC to other players to say we are here
+                if (stateChanged)
+                {
+                    stateChanged = false;
+					Rpc("SyncAfterBallDraw");
+                }
+				// Wait until sync has been recieved from all players
+				if (syncCount >= GameManager.playerIds.Count) {
+                    ChangeState(GameState.BALL_ROLL);
                     break;
                 }
                 break;
@@ -367,6 +388,12 @@ public partial class BingoManager : Node
         timeInState = 0;
         stateChanged = true;
     }
+
+    // Recieved from other players (and self) when they reach the end of ball draw
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    public void SyncAfterBallDraw() {
+		syncCount++;
+	}
 
 	public bool CheckBingo(int playerId) { 
 		// Switch over each game type for different bingo checks. 
