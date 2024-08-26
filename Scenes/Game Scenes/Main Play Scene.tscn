@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
 [ext_resource type="Texture2D" uid="uid://b6nw1a2ubikk0" path="res://Sprites/Balls/BallV2 Background.png" id="3_mqpsl"]
-[ext_resource type="Texture2D" uid="uid://cv2i20f56c5js" path="res://Sprites/Pens/Purple Pen Blot.png" id="3_pictx"]
 [ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="4_m4kv1"]
 [ext_resource type="Script" path="res://Scripts/BingoManager.cs" id="4_umn3p"]
 [ext_resource type="Texture2D" uid="uid://dmrpv8ndfrjf" path="res://Sprites/Balls/BallV2 White.png" id="4_wy4c5"]
@@ -13,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://tp8hm8muyaqt" path="res://Sprites/UI/Bingo Button.png" id="8_jodr4"]
 [ext_resource type="Texture2D" uid="uid://bpvkvtusp5n3m" path="res://Sprites/Popups/BingoText.png" id="9_rfrmu"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="9_yhg2y"]
+[ext_resource type="Texture2D" uid="uid://diof1aa88mkqy" path="res://Sprites/Pens/White Pen Blot.png" id="10_4cpba"]
 [ext_resource type="Texture2D" uid="uid://lg2fq4tddevb" path="res://Sprites/UI/BlueMenu 512x256.png" id="10_7l2cr"]
 [ext_resource type="Script" path="res://Scenes/Game Scenes/BingoButton.cs" id="11_n32g3"]
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="11_nejf4"]
@@ -86,7 +86,8 @@ scale = Vector2(2.6, 2.6)
 texture = ExtResource("7_xlwl1")
 offset = Vector2(0, -25)
 script = ExtResource("8_fnnak")
-blotTexture = ExtResource("3_pictx")
+blotTexture = ExtResource("10_4cpba")
+myBlotColor = Color(0, 0.588235, 0, 1)
 
 [node name="Other Players Cards" type="Node2D" parent="."]
 position = Vector2(500, 0)

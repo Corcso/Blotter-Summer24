@@ -11,6 +11,8 @@ public partial class Pen : Node2D
 
     BingoManager bingoManager;
 
+    [Export] Color myBlotColor;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -36,7 +38,8 @@ public partial class Pen : Node2D
                 myBingoCard.AddChild(newBlot);
                 newBlot.Texture = blotTexture;
                 newBlot.GlobalPosition = TranslateMouseToWorld(eventMouseButton.Position);
-                Rpc("BlotOtherCard", Multiplayer.GetUniqueId(), newBlot.Position);
+                newBlot.Modulate = myBlotColor;
+                Rpc("BlotOtherCard", Multiplayer.GetUniqueId(), newBlot.Position, myBlotColor);
             }
         }
         else if (@event is InputEventMouseMotion eventMouseMotion)
@@ -52,10 +55,11 @@ public partial class Pen : Node2D
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
-    public void BlotOtherCard(long playerId, Vector2 position)
+    public void BlotOtherCard(long playerId, Vector2 position, Color blotColor)
     {
         Sprite2D newBlot = new Sprite2D();
         bingoManager.playersCards[playerId].AddChild(newBlot);
+        newBlot.Modulate = blotColor;
         newBlot.Texture = blotTexture;
         newBlot.Position = position;
     }
