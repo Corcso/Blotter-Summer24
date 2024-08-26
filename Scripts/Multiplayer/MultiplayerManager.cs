@@ -14,6 +14,9 @@ public partial class MultiplayerManager : Node
     [Export] LineEdit playerNameInput;
     [Export] Control disconnectBox;
 
+    public Color playerPenColor;
+    public Color playerCardColor;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -69,7 +72,7 @@ public partial class MultiplayerManager : Node
     {
         GD.Print("Connected To Server");
         
-        RpcId(1, "SendPlayerInformation", (playerNameInput.Text == "") ? "Player" : playerNameInput.Text, Multiplayer.GetUniqueId());
+        RpcId(1, "SendPlayerInformation", (playerNameInput.Text == "") ? "Player" : playerNameInput.Text, Multiplayer.GetUniqueId(), playerPenColor, playerCardColor);
     }
 
     public void ConnectionFailed()
@@ -89,7 +92,7 @@ public partial class MultiplayerManager : Node
         Multiplayer.MultiplayerPeer = peer;
         GD.Print("Hosting Begin");
         // Send player information to ourself, no need for RPC as only user
-        SendPlayerInformation((playerNameInput.Text == "") ? "Host" : playerNameInput.Text, 1);
+        SendPlayerInformation((playerNameInput.Text == "") ? "Host" : playerNameInput.Text, 1, playerPenColor, playerCardColor);
         // Open the Lobby
         lobbyMenu.Visible = true;
         // Hide waiting on host, show play button
@@ -128,10 +131,12 @@ public partial class MultiplayerManager : Node
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-    private void SendPlayerInformation(string name, long id) { 
+    private void SendPlayerInformation(string name, long id, Color penColor, Color cardColor) { 
         PlayerInfo info = new PlayerInfo() { 
             name = name,
-            id = id 
+            id = id,
+            penColor = penColor,
+            cardColor = cardColor
         };
         if (!GameManager.players.ContainsKey(id)) {
             GameManager.players[id] = info;
@@ -153,7 +158,7 @@ public partial class MultiplayerManager : Node
         if (Multiplayer.IsServer()) { 
             foreach (KeyValuePair<long, PlayerInfo> playerPair in GameManager.players)
             {
-                Rpc("SendPlayerInformation", playerPair.Value.name, playerPair.Key);
+                Rpc("SendPlayerInformation", playerPair.Value.name, playerPair.Key, playerPair.Value.penColor, playerPair.Value.cardColor);
             }
         }
     }

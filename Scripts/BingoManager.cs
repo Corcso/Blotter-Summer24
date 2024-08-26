@@ -246,7 +246,7 @@ public partial class BingoManager : Node
 					}
 					BW_BallPositionWhenBingoPressed = bingoBall.Position;
 					BW_playerNameBoomText.Text = GameManager.players[BW_winningPlayerId].name;
-
+					BW_playerNameBoomText.LabelSettings.OutlineColor = GameManager.players[BW_winningPlayerId].cardColor;
                 }
                 if (timeInState <= 0.5f)
 				{
@@ -346,11 +346,14 @@ public partial class BingoManager : Node
                     stateChanged = false;
 					// Set winners names
 					gameOverPopupBox.GetNode<Label>("./Row Winner Name").Text = GameManager.players[winnerIds[0]].name;
+					gameOverPopupBox.GetNode<Label>("./Row Winner Name").LabelSettings.OutlineColor = GameManager.players[winnerIds[0]].cardColor;
 					gameOverPopupBox.GetNode<Label>("./FH Winner Name").Text = GameManager.players[winnerIds[1]].name;
-					gameOverPopupBox.GetNode<Label>("./TFH Winner Name").Text = GameManager.players[winnerIds[2]].name;
+                    gameOverPopupBox.GetNode<Label>("./FH Winner Name").LabelSettings.OutlineColor = GameManager.players[winnerIds[1]].cardColor;
+                    gameOverPopupBox.GetNode<Label>("./TFH Winner Name").Text = GameManager.players[winnerIds[2]].name;
+                    gameOverPopupBox.GetNode<Label>("./TFH Winner Name").LabelSettings.OutlineColor = GameManager.players[winnerIds[2]].cardColor;
 
-					// Make the box visible
-					gameOverPopupBox.Show();
+                    // Make the box visible
+                    gameOverPopupBox.Show();
 
 					// Make the waiting on host visible if not host, or host buttons visible if are. 
 					if (Multiplayer.IsServer())
@@ -496,7 +499,7 @@ public partial class BingoManager : Node
     private void RegisterNewCard(long playerId, int[] numbers) {
 
 		BingoCard card = bingoCardScene.Instantiate<BingoCard>();
-		card.GetNode<Node2D>("./Background").Modulate = new Color(1, 0, 0);
+		card.GetNode<Node2D>("./Background").Modulate = GameManager.players[playerId].cardColor;
 		card.UnpackNumbers(numbers);
 		card.PopulateNumbers();
 		// If this is my card spawn it in my card's location
@@ -519,7 +522,7 @@ public partial class BingoManager : Node
 			playerName.LabelSettings = new LabelSettings();
 			playerName.LabelSettings.Font = kalinaBold; 
 			playerName.LabelSettings.FontSize = 64; 
-			playerName.LabelSettings.OutlineColor = new Color(255, 127, 0);
+			playerName.LabelSettings.OutlineColor = GameManager.players[playerId].cardColor;
 			playerName.LabelSettings.OutlineSize = 8;
 			playerName.RotationDegrees = 90;
             otherPlayerCardHolder.CallDeferred(Node.MethodName.AddChild, playerName);

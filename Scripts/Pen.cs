@@ -11,13 +11,14 @@ public partial class Pen : Node2D
 
     BingoManager bingoManager;
 
-    [Export] Color myBlotColor;
+    Color myBlotColor;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
         bingoManager = GetNode<BingoManager>("../BingoManager");
 
+        myBlotColor = GameManager.players[Multiplayer.GetUniqueId()].penColor;
         GetNode<Node2D>("./Background").Modulate = myBlotColor;
         GetNode<Node2D>("./Foreground").Modulate = myBlotColor;
     }

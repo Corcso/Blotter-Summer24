@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=15 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dx7jlku6oxe12" path="res://Sprites/UI/PurpleMenu 512x512.png" id="6_akt68"]
 [ext_resource type="Script" path="res://Scripts/MainMenuManager.cs" id="8_ajk4h"]
 [ext_resource type="Texture2D" uid="uid://bikxihxgmtims" path="res://Sprites/UI/RedMenu 512x128.png" id="9_p2o5t"]
+[ext_resource type="Texture2D" uid="uid://vvjo4jyh48a" path="res://Sprites/Pens/Pen Background.png" id="10_bq0o1"]
+[ext_resource type="Texture2D" uid="uid://cggyo8geocqs2" path="res://Sprites/Pens/Pen Middleground.png" id="11_ahqqi"]
+[ext_resource type="Texture2D" uid="uid://cpchfrkkpjnrk" path="res://Sprites/Pens/Pen Foreground.png" id="12_1vcit"]
+[ext_resource type="Texture2D" uid="uid://qcxhm84n1cdy" path="res://Sprites/Bingo Cards/Card Selector Colour Background.png" id="13_qnpxr"]
+[ext_resource type="Texture2D" uid="uid://be153yre10jb1" path="res://Sprites/Bingo Cards/Card Selector Colour Foreground.png" id="14_mxy7t"]
 
 [node name="Control" type="Control"]
 texture_filter = 1
@@ -225,10 +230,12 @@ lobbyMenu = NodePath("../Lobby")
 playerNameInput = NodePath("../Name Input")
 disconnectBox = NodePath("../Disconnected Box")
 
-[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox")]
+[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
 joinMenu = NodePath("../Join Menu")
 disconnectBox = NodePath("../Disconnected Box")
+penColorButton = NodePath("../Change Pen Color Button")
+cardColorButton = NodePath("../Change Card Color Button")
 
 [node name="Name Input" type="LineEdit" parent="."]
 layout_mode = 1
@@ -296,8 +303,46 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
+[node name="Change Pen Color Button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 446.0
+offset_right = 152.235
+offset_bottom = 574.595
+rotation = 0.785398
+
+[node name="Background" type="Sprite2D" parent="Change Pen Color Button"]
+position = Vector2(21, 60)
+texture = ExtResource("10_bq0o1")
+
+[node name="Middleground" type="Sprite2D" parent="Change Pen Color Button"]
+position = Vector2(21, 60)
+texture = ExtResource("11_ahqqi")
+
+[node name="Foreground" type="Sprite2D" parent="Change Pen Color Button"]
+position = Vector2(21, 60)
+texture = ExtResource("12_1vcit")
+
+[node name="Change Card Color Button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 301.0
+offset_right = 75.0
+offset_bottom = 365.0
+scale = Vector2(2, 2)
+
+[node name="Background" type="Sprite2D" parent="Change Card Color Button"]
+position = Vector2(32, 32)
+texture = ExtResource("13_qnpxr")
+
+[node name="Foreground" type="Sprite2D" parent="Change Card Color Button"]
+position = Vector2(32, 32)
+texture = ExtResource("14_mxy7t")
+
 [connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
 [connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]
 [connection signal="pressed" from="Join Menu/Join Button" to="Multiplayer Manager" method="_on_join_button_pressed"]
 [connection signal="pressed" from="Lobby/Play Button" to="Multiplayer Manager" method="_on_play_button_pressed"]
 [connection signal="pressed" from="Disconnected Box/Close Disconnect Box" to="GUI Menu Manager" method="_on_close_disconnect_box_pressed"]
+[connection signal="pressed" from="Change Pen Color Button" to="GUI Menu Manager" method="_on_change_pen_color_button_pressed"]
+[connection signal="pressed" from="Change Card Color Button" to="GUI Menu Manager" method="_on_change_card_color_button_pressed"]

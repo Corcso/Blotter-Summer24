@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=27 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
 [ext_resource type="Texture2D" uid="uid://b6nw1a2ubikk0" path="res://Sprites/Balls/BallV2 Background.png" id="3_mqpsl"]
@@ -35,6 +35,24 @@ outline_color = Color(1, 0.517647, 0.129412, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_04iry"]
 font = ExtResource("9_yhg2y")
 font_size = 76
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqjir"]
+font = ExtResource("9_yhg2y")
+font_size = 64
+outline_size = 8
+outline_color = Color(1, 0.517647, 0.129412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tf8jn"]
+font = ExtResource("9_yhg2y")
+font_size = 64
+outline_size = 8
+outline_color = Color(1, 0.517647, 0.129412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6hx41"]
+font = ExtResource("9_yhg2y")
+font_size = 64
+outline_size = 8
+outline_color = Color(1, 0.517647, 0.129412, 1)
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -86,7 +104,6 @@ position = Vector2(-176, -251)
 rotation = 1.13446
 script = ExtResource("8_fnnak")
 blotTexture = ExtResource("10_4cpba")
-myBlotColor = Color(0, 0.588235, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="My Pen"]
 position = Vector2(0.383764, -49.2144)
@@ -212,7 +229,7 @@ offset_top = -106.0
 offset_right = 493.0
 offset_bottom = -19.0
 text = "Player12"
-label_settings = SubResource("LabelSettings_vnfay")
+label_settings = SubResource("LabelSettings_cqjir")
 
 [node name="FH Winner Name" type="Label" parent="Game Over Popup"]
 offset_left = 5.0
@@ -220,7 +237,7 @@ offset_top = -18.0
 offset_right = 491.0
 offset_bottom = 69.0
 text = "Host17451"
-label_settings = SubResource("LabelSettings_vnfay")
+label_settings = SubResource("LabelSettings_tf8jn")
 
 [node name="TFH Winner Name" type="Label" parent="Game Over Popup"]
 offset_left = 6.0
@@ -228,7 +245,7 @@ offset_top = 76.0
 offset_right = 492.0
 offset_bottom = 163.0
 text = "Host17451"
-label_settings = SubResource("LabelSettings_vnfay")
+label_settings = SubResource("LabelSettings_6hx41")
 
 [node name="Row Winner Text" type="Label" parent="Game Over Popup"]
 offset_left = -488.0
