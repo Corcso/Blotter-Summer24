@@ -1,19 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://clwk2634ogqgh"]
+[gd_scene load_steps=6 format=3 uid="uid://clwk2634ogqgh"]
 
-[ext_resource type="Texture2D" uid="uid://dgwxdlo7rtu7g" path="res://Sprites/Bingo Cards/Orange 256x512.png" id="1_ewov2"]
+[ext_resource type="Texture2D" uid="uid://v7nvgu8q0sky" path="res://Sprites/Bingo Cards/Background 256x512.png" id="1_4cn4w"]
 [ext_resource type="Script" path="res://Scripts/BingoCard.cs" id="2_c5mws"]
 [ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="3_bth04"]
+[ext_resource type="Texture2D" uid="uid://bx60yp5qwx320" path="res://Sprites/Bingo Cards/Foreground 256x512.png" id="3_ldqhq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_60lf3"]
 font = ExtResource("3_bth04")
 font_size = 17
 font_color = Color(0, 0, 0, 1)
 
-[node name="DebugOrangeCard128x256" type="Sprite2D"]
+[node name="BingoCard" type="Sprite2D"]
 clip_children = 2
 texture_filter = 1
-texture = ExtResource("1_ewov2")
+texture = ExtResource("1_4cn4w")
 script = ExtResource("2_c5mws")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_4cn4w")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+texture = ExtResource("3_ldqhq")
 
 [node name="Row0" type="Control" parent="."]
 layout_mode = 3

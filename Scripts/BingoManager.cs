@@ -496,6 +496,7 @@ public partial class BingoManager : Node
     private void RegisterNewCard(long playerId, int[] numbers) {
 
 		BingoCard card = bingoCardScene.Instantiate<BingoCard>();
+		card.GetNode<Node2D>("./Background").Modulate = new Color(1, 0, 0);
 		card.UnpackNumbers(numbers);
 		card.PopulateNumbers();
 		// If this is my card spawn it in my card's location
