@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=24 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
 [ext_resource type="Texture2D" uid="uid://b6nw1a2ubikk0" path="res://Sprites/Balls/BallV2 Background.png" id="3_mqpsl"]
@@ -7,15 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dmrpv8ndfrjf" path="res://Sprites/Balls/BallV2 White.png" id="4_wy4c5"]
 [ext_resource type="Texture2D" uid="uid://crpdeq2tyxapb" path="res://Sprites/Balls/BallV2 Ring.png" id="5_cfwfn"]
 [ext_resource type="Texture2D" uid="uid://ckbo8j4o2h1xu" path="res://Sprites/Balls/BallV2 Shine.png" id="7_h5e82"]
-[ext_resource type="Texture2D" uid="uid://1lw1v4t7by37" path="res://Sprites/Pens/Purple Pen.png" id="7_xlwl1"]
 [ext_resource type="Script" path="res://Scripts/Pen.cs" id="8_fnnak"]
 [ext_resource type="Texture2D" uid="uid://tp8hm8muyaqt" path="res://Sprites/UI/Bingo Button.png" id="8_jodr4"]
 [ext_resource type="Texture2D" uid="uid://bpvkvtusp5n3m" path="res://Sprites/Popups/BingoText.png" id="9_rfrmu"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="9_yhg2y"]
 [ext_resource type="Texture2D" uid="uid://diof1aa88mkqy" path="res://Sprites/Pens/White Pen Blot.png" id="10_4cpba"]
 [ext_resource type="Texture2D" uid="uid://lg2fq4tddevb" path="res://Sprites/UI/BlueMenu 512x256.png" id="10_7l2cr"]
+[ext_resource type="Texture2D" uid="uid://vvjo4jyh48a" path="res://Sprites/Pens/Pen Background.png" id="10_vriu2"]
 [ext_resource type="Script" path="res://Scenes/Game Scenes/BingoButton.cs" id="11_n32g3"]
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="11_nejf4"]
+[ext_resource type="Texture2D" uid="uid://cggyo8geocqs2" path="res://Sprites/Pens/Pen Middleground.png" id="11_ywp1c"]
+[ext_resource type="Texture2D" uid="uid://cpchfrkkpjnrk" path="res://Sprites/Pens/Pen Foreground.png" id="12_twryy"]
 [ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="15_27jtk"]
 [ext_resource type="Script" path="res://Scripts/Individual Node Scripts/GameOverButtons.cs" id="16_p43k4"]
 
@@ -79,15 +81,24 @@ horizontal_alignment = 1
 [node name="Ball Shine" type="Sprite2D" parent="Ball"]
 texture = ExtResource("7_h5e82")
 
-[node name="My Pen" type="Sprite2D" parent="."]
+[node name="My Pen" type="Node2D" parent="."]
 position = Vector2(-176, -251)
 rotation = 1.13446
-scale = Vector2(2.6, 2.6)
-texture = ExtResource("7_xlwl1")
-offset = Vector2(0, -25)
 script = ExtResource("8_fnnak")
 blotTexture = ExtResource("10_4cpba")
 myBlotColor = Color(0, 0.588235, 0, 1)
+
+[node name="Background" type="Sprite2D" parent="My Pen"]
+position = Vector2(0.383764, -49.2144)
+texture = ExtResource("10_vriu2")
+
+[node name="Middleground" type="Sprite2D" parent="My Pen"]
+position = Vector2(0.383764, -49.2144)
+texture = ExtResource("11_ywp1c")
+
+[node name="Foreground" type="Sprite2D" parent="My Pen"]
+position = Vector2(0.383764, -49.2144)
+texture = ExtResource("12_twryy")
 
 [node name="Other Players Cards" type="Node2D" parent="."]
 position = Vector2(500, 0)

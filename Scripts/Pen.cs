@@ -17,6 +17,9 @@ public partial class Pen : Node2D
     public override void _Ready()
 	{
         bingoManager = GetNode<BingoManager>("../BingoManager");
+
+        GetNode<Node2D>("./Background").Modulate = myBlotColor;
+        GetNode<Node2D>("./Foreground").Modulate = myBlotColor;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
