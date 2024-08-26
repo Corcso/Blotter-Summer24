@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=28 format=3 uid="uid://xr5l5vfgglbj"]
 
+[ext_resource type="Texture2D" uid="uid://dypa61fbpyv6h" path="res://Sprites/Backgrounds/Attempt1.png" id="1_2oaxa"]
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
 [ext_resource type="Texture2D" uid="uid://b6nw1a2ubikk0" path="res://Sprites/Balls/BallV2 Background.png" id="3_mqpsl"]
 [ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="4_m4kv1"]
@@ -56,6 +57,9 @@ outline_color = Color(1, 0.517647, 0.129412, 1)
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
+
+[node name="Overall Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_2oaxa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

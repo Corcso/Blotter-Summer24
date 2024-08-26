@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=16 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
 [ext_resource type="FontFile" uid="uid://b8gr5jbmlfi44" path="res://Fonts/Kalina/Kalnia-Medium.ttf" id="2_e4n4j"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/MultiplayerManager.cs" id="2_fd32g"]
 [ext_resource type="Texture2D" uid="uid://dr7swhe5dkika" path="res://Sprites/UI/Blotter Large Logo.png" id="2_g2wpm"]
+[ext_resource type="Texture2D" uid="uid://5qbtubd0iy88" path="res://Sprites/Backgrounds/Attempt2.png" id="2_tw7or"]
 [ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="2_xkdvm"]
 [ext_resource type="Texture2D" uid="uid://dx7jlku6oxe12" path="res://Sprites/UI/PurpleMenu 512x512.png" id="6_akt68"]
 [ext_resource type="Script" path="res://Scripts/MainMenuManager.cs" id="8_ajk4h"]
@@ -24,6 +25,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cyup8")
+
+[node name="Overall Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_tw7or")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
