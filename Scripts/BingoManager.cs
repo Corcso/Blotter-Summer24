@@ -37,7 +37,7 @@ public partial class BingoManager : Node
 	int ballToCall = 0;
 
     // Player id to their bingo card.
-    Godot.Collections.Dictionary<long, BingoCard> playersCards;
+    public Godot.Collections.Dictionary<long, BingoCard> playersCards;
 
 	// Bingo Card Scene
 	[Export] PackedScene bingoCardScene;
@@ -572,4 +572,5 @@ public partial class BingoManager : Node
 			GD.Print("NO BINGO");
 		}
 	}
+
 }

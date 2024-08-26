@@ -9,10 +9,13 @@ public partial class Pen : Node2D
 
     Sprite2D newBlot;
 
+    BingoManager bingoManager;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-	}
+        bingoManager = GetNode<BingoManager>("../BingoManager");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -33,6 +36,7 @@ public partial class Pen : Node2D
                 myBingoCard.AddChild(newBlot);
                 newBlot.Texture = blotTexture;
                 newBlot.GlobalPosition = TranslateMouseToWorld(eventMouseButton.Position);
+                Rpc("BlotOtherCard", Multiplayer.GetUniqueId(), newBlot.Position);
             }
         }
         else if (@event is InputEventMouseMotion eventMouseMotion)
@@ -45,5 +49,14 @@ public partial class Pen : Node2D
     private Vector2 TranslateMouseToWorld(Vector2 position)
     {
         return (position - (GetViewport().GetVisibleRect().Size / 2.0f)) / 1.0f;
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
+    public void BlotOtherCard(long playerId, Vector2 position)
+    {
+        Sprite2D newBlot = new Sprite2D();
+        bingoManager.playersCards[playerId].AddChild(newBlot);
+        newBlot.Texture = blotTexture;
+        newBlot.Position = position;
     }
 }
