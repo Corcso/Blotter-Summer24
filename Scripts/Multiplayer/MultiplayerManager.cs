@@ -17,6 +17,9 @@ public partial class MultiplayerManager : Node
     public Color playerPenColor;
     public Color playerCardColor;
 
+    // Boolean to store if we are currently in game, used by host to kick players which connect mid game.
+    bool inGame = false;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -66,6 +69,9 @@ public partial class MultiplayerManager : Node
         // Clear the game manager
         GameManager.playerIds.Clear();
         GameManager.players.Clear();
+
+        // Set us no longer in game 
+        inGame = false;
     }
 
     public void ConnectedToServer()
@@ -128,10 +134,17 @@ public partial class MultiplayerManager : Node
         GetTree().Root.AddChild(scene);
         scene.Name = "Game Scene";
         this.GetParent<Control>().Hide();
+        // Set in game to true
+        inGame = true;
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-    private void SendPlayerInformation(string name, long id, Color penColor, Color cardColor) { 
+    private void SendPlayerInformation(string name, long id, Color penColor, Color cardColor) {
+        // If we are the host and are in game, force disconnect this player and return
+        if (Multiplayer.IsServer() && inGame) { 
+            peer.DisconnectPeer((int)id, true);
+            return;
+        }
         PlayerInfo info = new PlayerInfo() { 
             name = name,
             id = id,
