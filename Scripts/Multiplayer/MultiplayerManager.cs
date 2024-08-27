@@ -175,4 +175,8 @@ public partial class MultiplayerManager : Node
             }
         }
     }
+
+    public void _on_leave_lobby_pressed() {
+        PeerDisconnected(Multiplayer.GetUniqueId());
+    }
 }

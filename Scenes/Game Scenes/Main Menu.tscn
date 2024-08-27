@@ -139,6 +139,20 @@ theme_override_font_sizes/font_size = 65
 text = "Join Game"
 horizontal_alignment = 1
 
+[node name="Close Join Box" type="Button" parent="Join Menu"]
+offset_left = -229.0
+offset_top = -146.0
+offset_right = -169.0
+offset_bottom = -44.0
+theme_override_colors/font_color = Color(0.92549, 0.4, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0.760784, 0.219608, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.568627, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 72
+text = "X"
+flat = true
+
 [node name="Lobby" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -347,7 +361,9 @@ texture = ExtResource("14_mxy7t")
 [connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
 [connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]
 [connection signal="pressed" from="Join Menu/Join Button" to="Multiplayer Manager" method="_on_join_button_pressed"]
+[connection signal="pressed" from="Join Menu/Close Join Box" to="GUI Menu Manager" method="_on_close_join_box_pressed"]
 [connection signal="pressed" from="Lobby/Play Button" to="Multiplayer Manager" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Lobby/Leave Lobby" to="Multiplayer Manager" method="_on_leave_lobby_pressed"]
 [connection signal="pressed" from="Disconnected Box/Close Disconnect Box" to="GUI Menu Manager" method="_on_close_disconnect_box_pressed"]
 [connection signal="pressed" from="Change Pen Color Button" to="GUI Menu Manager" method="_on_change_pen_color_button_pressed"]
 [connection signal="pressed" from="Change Card Color Button" to="GUI Menu Manager" method="_on_change_card_color_button_pressed"]

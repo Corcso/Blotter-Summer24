@@ -78,4 +78,8 @@ public partial class MainMenuManager : Node
         cardColorButton.GetNode<Node2D>("./Background").Modulate = cardColor;
         multiplayerManager.playerCardColor = cardColor;
     }
+
+    public void _on_close_join_box_pressed() {
+        joinMenu.Visible = false;
+    }
 }
