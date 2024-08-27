@@ -19,6 +19,11 @@ public partial class MultiplayerManager : Node
     public Color playerPenColor;
     public Color playerCardColor;
 
+    // Buttons for card and pen colour
+    // Used to hide them when joined game and show when disconnected. 
+    [Export] Control penColorButton;
+    [Export] Control cardColorButton;
+
     // Boolean to store if we are currently in game, used by host to kick players which connect mid game.
     bool inGame = false;
 
@@ -60,6 +65,10 @@ public partial class MultiplayerManager : Node
             gameScene.QueueFree();
             GetParent<Control>().Show();
         }
+        // Show all colour and name inputs, these can be changed again
+        penColorButton.Visible = true;
+        cardColorButton.Visible = true;
+        playerNameInput.Visible = true;
         // Show disconnected box
         disconnectBox.Visible = true;
         // Delete multiplayer peer
@@ -91,6 +100,12 @@ public partial class MultiplayerManager : Node
         connecting = false;
         // Hide connecting box
         connectingBox.Visible = false;
+            
+
+        // Hide all colour and name inputs, these cant be changed once joined
+        penColorButton.Visible = false;
+        cardColorButton.Visible = false;
+        playerNameInput.Visible = false;
 
         GD.Print("Connected To Server");
         // Open the Lobby
@@ -132,6 +147,12 @@ public partial class MultiplayerManager : Node
         // Hide waiting on host, show play button
         lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = false;
         lobbyMenu.GetNode<Control>("./Play Button").Visible = true;
+
+
+        // Hide all colour and name inputs, these cant be changed once joined
+        penColorButton.Visible = false;
+        cardColorButton.Visible = false;
+        playerNameInput.Visible = false;
 
     }
     public void _on_join_button_pressed() {

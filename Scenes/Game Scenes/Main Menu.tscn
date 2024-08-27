@@ -141,6 +141,7 @@ text = "Join Game"
 horizontal_alignment = 1
 
 [node name="Close Join Box" type="Button" parent="Join Menu"]
+layout_mode = 0
 offset_left = -229.0
 offset_top = -146.0
 offset_right = -169.0
@@ -242,7 +243,7 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
-[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox")]
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton")]
 script = ExtResource("2_fd32g")
 address = NodePath("../Join Menu/Address")
 playersListGrid = NodePath("../Lobby/Grid")
@@ -251,6 +252,8 @@ playerNameInput = NodePath("../Name Input")
 disconnectBox = NodePath("../Disconnected Box")
 cantConnectBox = NodePath("../Cant Connect Box")
 connectingBox = NodePath("../Connecting Box")
+penColorButton = NodePath("../Change Pen Color Button")
+cardColorButton = NodePath("../Change Card Color Button")
 
 [node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
