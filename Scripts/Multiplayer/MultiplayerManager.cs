@@ -14,6 +14,7 @@ public partial class MultiplayerManager : Node
     [Export] LineEdit playerNameInput;
     [Export] Control disconnectBox;
     [Export] Control cantConnectBox;
+    [Export] Control connectingBox;
 
     public Color playerPenColor;
     public Color playerCardColor;
@@ -88,7 +89,9 @@ public partial class MultiplayerManager : Node
     {
         // We are no longer connecting
         connecting = false;
-      
+        // Hide connecting box
+        connectingBox.Visible = false;
+
         GD.Print("Connected To Server");
         // Open the Lobby
         lobbyMenu.Visible = true;
@@ -103,9 +106,12 @@ public partial class MultiplayerManager : Node
     public void ConnectionFailed()
     {
         GD.Print("Connection Failed");
-        cantConnectBox.Visible = true;
+        // We are no longer connecting
         connecting = false;
-
+        // Hide connecting box
+        connectingBox.Visible = false;
+        // Show cant connect box
+        cantConnectBox.Visible = true;
     }
 
     public void _on_host_button_pressed() {
@@ -147,6 +153,8 @@ public partial class MultiplayerManager : Node
         // Set connecting and connection timer
         timeConnecting = 0;
         connecting = true;
+        // Show connecting box
+        connectingBox.Visible = true;
     }
 
     public void _on_play_button_pressed() {

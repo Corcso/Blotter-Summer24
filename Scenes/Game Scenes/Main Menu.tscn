@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=17 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bikxihxgmtims" path="res://Sprites/UI/RedMenu 512x128.png" id="9_p2o5t"]
 [ext_resource type="Texture2D" uid="uid://vvjo4jyh48a" path="res://Sprites/Pens/Pen Background.png" id="10_bq0o1"]
 [ext_resource type="Texture2D" uid="uid://cggyo8geocqs2" path="res://Sprites/Pens/Pen Middleground.png" id="11_ahqqi"]
+[ext_resource type="Texture2D" uid="uid://bv2khesp1qrr7" path="res://Sprites/UI/YellowMenu 512x128.png" id="11_kv4sd"]
 [ext_resource type="Texture2D" uid="uid://cpchfrkkpjnrk" path="res://Sprites/Pens/Pen Foreground.png" id="12_1vcit"]
 [ext_resource type="Texture2D" uid="uid://qcxhm84n1cdy" path="res://Sprites/Bingo Cards/Card Selector Colour Background.png" id="13_qnpxr"]
 [ext_resource type="Texture2D" uid="uid://be153yre10jb1" path="res://Sprites/Bingo Cards/Card Selector Colour Foreground.png" id="14_mxy7t"]
@@ -241,7 +242,7 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
-[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox")]
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox")]
 script = ExtResource("2_fd32g")
 address = NodePath("../Join Menu/Address")
 playersListGrid = NodePath("../Lobby/Grid")
@@ -249,6 +250,7 @@ lobbyMenu = NodePath("../Lobby")
 playerNameInput = NodePath("../Name Input")
 disconnectBox = NodePath("../Disconnected Box")
 cantConnectBox = NodePath("../Cant Connect Box")
+connectingBox = NodePath("../Connecting Box")
 
 [node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
@@ -377,6 +379,45 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
+
+[node name="Connecting Box" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Connecting Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_kv4sd")
+
+[node name="Label" type="Label" parent="Connecting Box"]
+layout_mode = 0
+offset_left = -165.0
+offset_top = -16.0
+offset_right = 247.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 56
+text = "Connecting..."
 
 [node name="Change Pen Color Button" type="TextureButton" parent="."]
 layout_mode = 0
