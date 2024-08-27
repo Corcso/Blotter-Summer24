@@ -13,12 +13,17 @@ public partial class MultiplayerManager : Node
     [Export] Control lobbyMenu;
     [Export] LineEdit playerNameInput;
     [Export] Control disconnectBox;
+    [Export] Control cantConnectBox;
 
     public Color playerPenColor;
     public Color playerCardColor;
 
     // Boolean to store if we are currently in game, used by host to kick players which connect mid game.
     bool inGame = false;
+
+    // Boolean and timer to check if we are connecting. 
+    bool connecting = false;
+    float timeConnecting = 0;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -32,6 +37,11 @@ public partial class MultiplayerManager : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        // If we have been connecting for more than 10 seconds time out. 
+        if (connecting) {
+            timeConnecting += (float)delta;
+            if (timeConnecting > 10.0f) ConnectionFailed();
+        }
 	}
 
     public void PeerConnected(long id)
@@ -76,14 +86,26 @@ public partial class MultiplayerManager : Node
 
     public void ConnectedToServer()
     {
+        // We are no longer connecting
+        connecting = false;
+      
         GD.Print("Connected To Server");
-        
+        // Open the Lobby
+        lobbyMenu.Visible = true;
+        // Show waiting on host, hide play button
+        lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = true;
+        lobbyMenu.GetNode<Control>("./Play Button").Visible = false;
+
+        // Send our info to the server/host
         RpcId(1, "SendPlayerInformation", (playerNameInput.Text == "") ? "Player" : playerNameInput.Text, Multiplayer.GetUniqueId(), playerPenColor, playerCardColor);
     }
 
     public void ConnectionFailed()
     {
         GD.Print("Connection Failed");
+        cantConnectBox.Visible = true;
+        connecting = false;
+
     }
 
     public void _on_host_button_pressed() {
@@ -104,6 +126,7 @@ public partial class MultiplayerManager : Node
         // Hide waiting on host, show play button
         lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = false;
         lobbyMenu.GetNode<Control>("./Play Button").Visible = true;
+
     }
     public void _on_join_button_pressed() {
         peer = new ENetMultiplayerPeer();
@@ -117,11 +140,13 @@ public partial class MultiplayerManager : Node
 
         Multiplayer.MultiplayerPeer = peer;
         GD.Print("joined");
-        // Open the Lobby
-        lobbyMenu.Visible = true;
-        // Show waiting on host, hide play button
-        lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = true;
-        lobbyMenu.GetNode<Control>("./Play Button").Visible = false;
+        GD.Print(peer.GetConnectionStatus().ToString());
+        
+
+
+        // Set connecting and connection timer
+        timeConnecting = 0;
+        connecting = true;
     }
 
     public void _on_play_button_pressed() {

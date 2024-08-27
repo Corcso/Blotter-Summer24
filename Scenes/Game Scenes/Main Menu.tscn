@@ -241,18 +241,20 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
-[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox")]
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox")]
 script = ExtResource("2_fd32g")
 address = NodePath("../Join Menu/Address")
 playersListGrid = NodePath("../Lobby/Grid")
 lobbyMenu = NodePath("../Lobby")
 playerNameInput = NodePath("../Name Input")
 disconnectBox = NodePath("../Disconnected Box")
+cantConnectBox = NodePath("../Cant Connect Box")
 
-[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "penColorButton", "cardColorButton")]
+[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
 joinMenu = NodePath("../Join Menu")
 disconnectBox = NodePath("../Disconnected Box")
+cantConnectBox = NodePath("../Cant Connect Box")
 penColorButton = NodePath("../Change Pen Color Button")
 cardColorButton = NodePath("../Change Card Color Button")
 
@@ -322,6 +324,60 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
+[node name="Cant Connect Box" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Cant Connect Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_p2o5t")
+
+[node name="Label" type="Label" parent="Cant Connect Box"]
+layout_mode = 0
+offset_left = -148.0
+offset_top = -15.0
+offset_right = 264.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 56
+text = "Can't Connect"
+
+[node name="Close Cant Connect Box" type="Button" parent="Cant Connect Box"]
+layout_mode = 0
+offset_left = -223.0
+offset_top = -29.0
+offset_right = -163.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0.92549, 0.4, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0.760784, 0.219608, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.568627, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 72
+text = "X"
+flat = true
+
 [node name="Change Pen Color Button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 110.0
@@ -365,5 +421,6 @@ texture = ExtResource("14_mxy7t")
 [connection signal="pressed" from="Lobby/Play Button" to="Multiplayer Manager" method="_on_play_button_pressed"]
 [connection signal="pressed" from="Lobby/Leave Lobby" to="Multiplayer Manager" method="_on_leave_lobby_pressed"]
 [connection signal="pressed" from="Disconnected Box/Close Disconnect Box" to="GUI Menu Manager" method="_on_close_disconnect_box_pressed"]
+[connection signal="pressed" from="Cant Connect Box/Close Cant Connect Box" to="GUI Menu Manager" method="_on_close_cant_connect_box_pressed"]
 [connection signal="pressed" from="Change Pen Color Button" to="GUI Menu Manager" method="_on_change_pen_color_button_pressed"]
 [connection signal="pressed" from="Change Card Color Button" to="GUI Menu Manager" method="_on_change_card_color_button_pressed"]
