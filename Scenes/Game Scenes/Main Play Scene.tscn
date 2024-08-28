@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=31 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="Texture2D" uid="uid://dypa61fbpyv6h" path="res://Sprites/Backgrounds/Attempt1.png" id="1_2oaxa"]
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
@@ -14,9 +14,11 @@
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="9_yhg2y"]
 [ext_resource type="Texture2D" uid="uid://diof1aa88mkqy" path="res://Sprites/Pens/White Pen Blot.png" id="10_4cpba"]
 [ext_resource type="Texture2D" uid="uid://lg2fq4tddevb" path="res://Sprites/UI/BlueMenu 512x256.png" id="10_7l2cr"]
+[ext_resource type="AudioStream" uid="uid://ba5i4j2l00u1e" path="res://Sounds/SFX/Ball-Swoosh-In.wav" id="10_uecp5"]
 [ext_resource type="Texture2D" uid="uid://vvjo4jyh48a" path="res://Sprites/Pens/Pen Background.png" id="10_vriu2"]
 [ext_resource type="Script" path="res://Scenes/Game Scenes/BingoButton.cs" id="11_n32g3"]
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="11_nejf4"]
+[ext_resource type="AudioStream" uid="uid://b1trwxxlddy8d" path="res://Sounds/SFX/Bingo-Roll-Ball.wav" id="11_o13d5"]
 [ext_resource type="Texture2D" uid="uid://cggyo8geocqs2" path="res://Sprites/Pens/Pen Middleground.png" id="11_ywp1c"]
 [ext_resource type="Texture2D" uid="uid://cpchfrkkpjnrk" path="res://Sprites/Pens/Pen Foreground.png" id="12_twryy"]
 [ext_resource type="AudioStream" uid="uid://dhcp3brqumwtx" path="res://Sounds/SFX/Blot-SFX-04.wav" id="14_ec11x"]
@@ -107,6 +109,12 @@ horizontal_alignment = 1
 
 [node name="Ball Shine" type="Sprite2D" parent="Ball"]
 texture = ExtResource("7_h5e82")
+
+[node name="Ball Slide In" type="AudioStreamPlayer" parent="Ball"]
+stream = ExtResource("10_uecp5")
+
+[node name="Ball Roll" type="AudioStreamPlayer" parent="Ball"]
+stream = ExtResource("11_o13d5")
 
 [node name="My Pen" type="Node2D" parent="."]
 position = Vector2(-176, -251)

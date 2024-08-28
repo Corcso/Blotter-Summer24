@@ -177,7 +177,10 @@ public partial class BingoManager : Node
 						} while (calledBalls.Contains(ballToCall));
 						Rpc("SetCurrentBall", ballToCall);
 					}
-					int ballColourChoice = rng.RandiRange(0, 5);
+					// Play bingo roll sound effect
+					bingoBall.GetNode<AudioStreamPlayer>("./Ball Roll").Play();
+					// Set ball colour (client side)
+                    int ballColourChoice = rng.RandiRange(0, 5);
                     Color ballColour = new Color(1, 0, 0); // Initialse as red but this will be overwritten
 					switch (ballColourChoice) {
 						case 0: ballColour = new Color(1, 0, 0); break; // Red
@@ -205,10 +208,13 @@ public partial class BingoManager : Node
 				if (stateChanged)
 				{
 					stateChanged = false;
-					// Add the ball to the called balls array
-					// This means now bingos with this ball can be called
-					//calledBalls.Append(ballToCall);
-				}
+                    // Add the ball to the called balls array
+                    // This means now bingos with this ball can be called
+                    //calledBalls.Append(ballToCall);
+
+                    // Play bingo ball slide sound effect
+                    bingoBall.GetNode<AudioStreamPlayer>("./Ball Slide In").Play();
+                }
 				// Animate the ball into position
                 bingoBall.Position = START_BALL_POSITION.Lerp(HANG_BALL_POSITION, Mathf.Clamp((float)timeInState, 0, 1));
 				bingoBall.Scale = Vector2.One * Mathf.Lerp(0, 1.0f, Mathf.Clamp((float)timeInState, 0, 1));
