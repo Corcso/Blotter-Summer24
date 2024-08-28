@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=18 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cpchfrkkpjnrk" path="res://Sprites/Pens/Pen Foreground.png" id="12_1vcit"]
 [ext_resource type="Texture2D" uid="uid://qcxhm84n1cdy" path="res://Sprites/Bingo Cards/Card Selector Colour Background.png" id="13_qnpxr"]
 [ext_resource type="Texture2D" uid="uid://be153yre10jb1" path="res://Sprites/Bingo Cards/Card Selector Colour Foreground.png" id="14_mxy7t"]
+[ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="17_23ov7"]
 
 [node name="Control" type="Control"]
 texture_filter = 1
@@ -243,7 +244,7 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
-[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton")]
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton", "errorSFX")]
 script = ExtResource("2_fd32g")
 address = NodePath("../Join Menu/Address")
 playersListGrid = NodePath("../Lobby/Grid")
@@ -254,6 +255,7 @@ cantConnectBox = NodePath("../Cant Connect Box")
 connectingBox = NodePath("../Connecting Box")
 penColorButton = NodePath("../Change Pen Color Button")
 cardColorButton = NodePath("../Change Card Color Button")
+errorSFX = NodePath("../Error")
 
 [node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
@@ -457,6 +459,9 @@ texture = ExtResource("13_qnpxr")
 [node name="Foreground" type="Sprite2D" parent="Change Card Color Button"]
 position = Vector2(32, 32)
 texture = ExtResource("14_mxy7t")
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_23ov7")
 
 [connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
 [connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]

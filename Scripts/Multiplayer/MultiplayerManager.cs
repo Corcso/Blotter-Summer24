@@ -24,6 +24,9 @@ public partial class MultiplayerManager : Node
     [Export] Control penColorButton;
     [Export] Control cardColorButton;
 
+    // Sound effects for main menu
+    [Export] AudioStreamPlayer errorSFX;
+
     // Boolean to store if we are currently in game, used by host to kick players which connect mid game.
     bool inGame = false;
 
@@ -92,6 +95,9 @@ public partial class MultiplayerManager : Node
 
         // Set us no longer in game 
         inGame = false;
+
+        // Play error sound
+        errorSFX.Play();
     }
 
     public void ConnectedToServer()
@@ -127,6 +133,8 @@ public partial class MultiplayerManager : Node
         connectingBox.Visible = false;
         // Show cant connect box
         cantConnectBox.Visible = true;
+        // Play error sound
+        errorSFX.Play();
     }
 
     public void _on_host_button_pressed() {
@@ -134,6 +142,8 @@ public partial class MultiplayerManager : Node
         Error error = peer.CreateServer(port, 4);
         if (error != Error.Ok) { 
             GD.Print(error.ToString());
+            // Play error sound
+            errorSFX.Play();
             return;
         }
         peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
@@ -161,6 +171,8 @@ public partial class MultiplayerManager : Node
         if (error != Error.Ok)
         {
             GD.Print(error.ToString());
+            // Play error sound
+            errorSFX.Play();
             return;
         }
         peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
