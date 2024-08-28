@@ -82,7 +82,7 @@ public partial class BingoManager : Node
 
 		// Setup the called balls array
 		calledBalls = new List<int>();
-		for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
+		//for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
 
         // Setup winners array 
         winnerIds = new long[3];
@@ -580,6 +580,8 @@ public partial class BingoManager : Node
 		}
 		else {
 			GD.Print("NO BINGO");
+			// Play no bingo sound
+			bingoButton.GetNode<AudioStreamPlayer>("./Bingo Not Success").Play();
 		}
 	}
 
