@@ -13,6 +13,10 @@ public partial class Pen : Node2D
 
     Color myBlotColor;
 
+    AudioStreamPlayer blotSFX;
+
+    RandomNumberGenerator rng;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -21,6 +25,12 @@ public partial class Pen : Node2D
         myBlotColor = GameManager.players[Multiplayer.GetUniqueId()].penColor;
         GetNode<Node2D>("./Background").Modulate = myBlotColor;
         GetNode<Node2D>("./Foreground").Modulate = myBlotColor;
+
+        // Get the blot SFX audio player
+        blotSFX = GetNode<AudioStreamPlayer>("./Blot SFX");
+
+        // Setup random number generator
+        rng = new RandomNumberGenerator();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +54,12 @@ public partial class Pen : Node2D
                 newBlot.GlobalPosition = TranslateMouseToWorld(eventMouseButton.Position);
                 newBlot.Modulate = myBlotColor;
                 Rpc("BlotOtherCard", Multiplayer.GetUniqueId(), newBlot.Position, myBlotColor);
+                // If blot within bounds of card play sound effect
+                if (Mathf.Abs(newBlot.Position.X) <= 144 && Mathf.Abs(newBlot.Position.Y) <= 272)
+                {
+                    blotSFX.PitchScale = rng.RandfRange(0.95f, 1.05f);
+                    blotSFX.Play();
+                }
             }
         }
         else if (@event is InputEventMouseMotion eventMouseMotion)
