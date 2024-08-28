@@ -82,7 +82,7 @@ public partial class BingoManager : Node
 
 		// Setup the called balls array
 		calledBalls = new List<int>();
-		for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
+		//for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
 
         // Setup winners array 
         winnerIds = new long[3];
@@ -173,7 +173,7 @@ public partial class BingoManager : Node
 						// Generate a new ball making sure it hasnt been chosen already
 						do
 						{
-							ballToCall = rng.RandiRange(1, 900);
+							ballToCall = rng.RandiRange(1, 90);
 						} while (calledBalls.Contains(ballToCall));
 						Rpc("SetCurrentBall", ballToCall);
 					}
@@ -476,7 +476,10 @@ public partial class BingoManager : Node
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	private void SetCurrentBall(int ball) {
+		// Set the ball to call
 		ballToCall = ball;
+		// Add that number to the list of called balls
+		calledBalls.Add(ballToCall);
         // Set the balls text to that ball
         bingoBall.GetNode<Label>("./Inner Rotate/Number").Text = ballToCall.ToString();
         // Reset ball position and scale
