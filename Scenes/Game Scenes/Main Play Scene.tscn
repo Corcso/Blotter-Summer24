@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=33 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="Texture2D" uid="uid://dypa61fbpyv6h" path="res://Sprites/Backgrounds/Attempt1.png" id="1_2oaxa"]
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="15_27jtk"]
 [ext_resource type="Script" path="res://Scripts/Individual Node Scripts/GameOverButtons.cs" id="16_p43k4"]
 [ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="20_hbxht"]
+[ext_resource type="AudioStream" uid="uid://u4ahb55lq6o1" path="res://Sounds/SFX/Bingo-Win.wav" id="21_sqpro"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
 font = ExtResource("4_m4kv1")
@@ -184,6 +185,9 @@ script = ExtResource("11_n32g3")
 
 [node name="Bingo Not Success" type="AudioStreamPlayer" parent="Bingo Button"]
 stream = ExtResource("20_hbxht")
+
+[node name="Bingo Win" type="AudioStreamPlayer" parent="Bingo Button"]
+stream = ExtResource("21_sqpro")
 
 [node name="Bingo Boom Text" type="Sprite2D" parent="."]
 position = Vector2(-811, -679)
