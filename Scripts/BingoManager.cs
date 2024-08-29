@@ -90,7 +90,7 @@ public partial class BingoManager : Node
 		// Setup the called balls array
 		calledBalls = new List<int>();
 		//for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
-		//for (int i = 1; i < 90;  i++) { calledBalls.Add(i); }
+		for (int i = 1; i < 90;  i++) { calledBalls.Add(i); }
 
         // Setup winners array 
         winnerIds = new long[3];
@@ -367,7 +367,8 @@ public partial class BingoManager : Node
                     newGameTypePopupBox.Position = (Vector2)Tween.InterpolateValue(POPUP_HOLD_POSITION, POPUP_START_POSITION - POPUP_HOLD_POSITION, timeInState - 1.4f, 0.7, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                 }
 				else if (timeInState > 2.1f) { 
-					ChangeState(GameState.BALL_ROLL);
+					// Change to drawing ball, so the last ball is redrawn incase missed. 
+					ChangeState(GameState.DRAWING_BALL);
 					newGameTypePopupBox.Hide();
                     // Play in game music again 
                     inGameMusic.Play();
