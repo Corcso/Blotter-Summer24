@@ -116,9 +116,10 @@ public partial class MultiplayerManager : Node
         GD.Print("Connected To Server");
         // Open the Lobby
         lobbyMenu.Visible = true;
-        // Show waiting on host, hide play button
+        // Show waiting on host, hide play button, hide waiting for players (because you will be at least 2nd player)
         lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = true;
         lobbyMenu.GetNode<Control>("./Play Button").Visible = false;
+        lobbyMenu.GetNode<Control>("./Waiting For Players").Visible = false;
 
         // Send our info to the server/host
         RpcId(1, "SendPlayerInformation", (playerNameInput.Text == "") ? "Player" : playerNameInput.Text, Multiplayer.GetUniqueId(), playerPenColor, playerCardColor);
@@ -154,9 +155,10 @@ public partial class MultiplayerManager : Node
         SendPlayerInformation((playerNameInput.Text == "") ? "Host" : playerNameInput.Text, 1, playerPenColor, playerCardColor);
         // Open the Lobby
         lobbyMenu.Visible = true;
-        // Hide waiting on host, show play button
+        // Hide waiting on host, hide play button, show waiting for players (initially)
+        lobbyMenu.GetNode<Control>("./Waiting For Players").Visible = true;
         lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = false;
-        lobbyMenu.GetNode<Control>("./Play Button").Visible = true;
+        lobbyMenu.GetNode<Control>("./Play Button").Visible = false;
 
 
         // Hide all colour and name inputs, these cant be changed once joined
@@ -238,6 +240,14 @@ public partial class MultiplayerManager : Node
             foreach (KeyValuePair<long, PlayerInfo> playerPair in GameManager.players)
             {
                 Rpc("SendPlayerInformation", playerPair.Value.name, playerPair.Key, playerPair.Value.penColor, playerPair.Value.cardColor);
+            }
+
+            // If host and this is 2nd+ player then show play button
+            if (GameManager.playerIds.Count >= 2) {
+                // Hide waiting on host, show play button, hide waiting for players
+                lobbyMenu.GetNode<Control>("./Waiting For Players").Visible = false;
+                lobbyMenu.GetNode<Control>("./Waiting On Host").Visible = false;
+                lobbyMenu.GetNode<Control>("./Play Button").Visible = true;
             }
         }
     }

@@ -229,6 +229,15 @@ offset_bottom = 277.0
 theme_override_font_sizes/font_size = 48
 text = "Waiting On Host"
 
+[node name="Waiting For Players" type="Label" parent="Lobby"]
+layout_mode = 0
+offset_left = -245.0
+offset_top = 179.0
+offset_right = 367.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 48
+text = "Waiting for Players"
+
 [node name="Leave Lobby" type="Button" parent="Lobby"]
 layout_mode = 0
 offset_left = -247.0
