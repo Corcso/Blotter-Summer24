@@ -83,6 +83,7 @@ inWaitMusic = NodePath("../Game Wait Music")
 position = Vector2(-316, -654)
 
 [node name="PLACEHOLDER" parent="Player Bingo Card" instance=ExtResource("1_8gael")]
+visible = false
 
 [node name="WhitePenBlot" type="Sprite2D" parent="Player Bingo Card/PLACEHOLDER"]
 position = Vector2(40, 138)
@@ -240,6 +241,7 @@ Full House!"
 horizontal_alignment = 1
 
 [node name="All Balls Called Popup" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-316, -653)
 texture = ExtResource("26_6b2hi")
 
