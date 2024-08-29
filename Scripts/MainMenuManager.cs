@@ -8,6 +8,7 @@ public partial class MainMenuManager : Node
 	[Export] Control joinMenu;
     [Export] Control disconnectBox;
     [Export] Control cantConnectBox;
+    [Export] Control optionsBox;
 
 	int currentPenColourChoice = 0;
 	int currentCardColorChoice = 0;
@@ -86,5 +87,13 @@ public partial class MainMenuManager : Node
 
     public void _on_close_cant_connect_box_pressed() {
         cantConnectBox.Visible = false;
+    }
+
+    public void _on_options_button_pressed() {
+        optionsBox.Visible = true;
+    }
+
+    public void _on_close_options_box_pressed() { 
+        optionsBox.Visible = false;
     }
 }

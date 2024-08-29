@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class MultiplayerManager : Node
 {
     [Export] LineEdit address;
-    int port = 41761;
+    [Export] SpinBox port;
 
     private ENetMultiplayerPeer peer;
 
@@ -140,7 +140,7 @@ public partial class MultiplayerManager : Node
 
     public void _on_host_button_pressed() {
         peer = new ENetMultiplayerPeer();
-        Error error = peer.CreateServer(port, 4);
+        Error error = peer.CreateServer((int)port.Value, 4);
         if (error != Error.Ok) { 
             GD.Print(error.ToString());
             // Play error sound
@@ -169,7 +169,7 @@ public partial class MultiplayerManager : Node
     }
     public void _on_join_button_pressed() {
         peer = new ENetMultiplayerPeer();
-        Error error = peer.CreateClient(address.Text, port);
+        Error error = peer.CreateClient(address.Text, (int)port.Value);
         if (error != Error.Ok)
         {
             GD.Print(error.ToString());

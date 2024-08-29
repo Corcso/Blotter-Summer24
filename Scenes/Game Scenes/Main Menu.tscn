@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=19 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cpchfrkkpjnrk" path="res://Sprites/Pens/Pen Foreground.png" id="12_1vcit"]
 [ext_resource type="Texture2D" uid="uid://qcxhm84n1cdy" path="res://Sprites/Bingo Cards/Card Selector Colour Background.png" id="13_qnpxr"]
 [ext_resource type="Texture2D" uid="uid://be153yre10jb1" path="res://Sprites/Bingo Cards/Card Selector Colour Foreground.png" id="14_mxy7t"]
+[ext_resource type="Texture2D" uid="uid://33ga0kdkq8tm" path="res://Sprites/UI/GreenMenu 512x256.png" id="17_3ysmg"]
 [ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="17_23ov7"]
 
 [node name="Control" type="Control"]
@@ -71,6 +72,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 72
 text = "Join Game"
+
+[node name="Options Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = 104.0
+offset_right = 99.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Options"
 
 [node name="Join Menu" type="Control" parent="."]
 visible = false
@@ -253,9 +270,10 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
-[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton", "errorSFX")]
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "port", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton", "errorSFX")]
 script = ExtResource("2_fd32g")
 address = NodePath("../Join Menu/Address")
+port = NodePath("../Options Menu/Port")
 playersListGrid = NodePath("../Lobby/Grid")
 lobbyMenu = NodePath("../Lobby")
 playerNameInput = NodePath("../Name Input")
@@ -266,11 +284,12 @@ penColorButton = NodePath("../Change Pen Color Button")
 cardColorButton = NodePath("../Change Card Color Button")
 errorSFX = NodePath("../Error")
 
-[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "penColorButton", "cardColorButton")]
+[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "optionsBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
 joinMenu = NodePath("../Join Menu")
 disconnectBox = NodePath("../Disconnected Box")
 cantConnectBox = NodePath("../Cant Connect Box")
+optionsBox = NodePath("../Options Menu")
 penColorButton = NodePath("../Change Pen Color Button")
 cardColorButton = NodePath("../Change Card Color Button")
 
@@ -469,11 +488,105 @@ texture = ExtResource("13_qnpxr")
 position = Vector2(32, 32)
 texture = ExtResource("14_mxy7t")
 
+[node name="Options Menu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Options Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -154.0
+offset_right = 257.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_3ysmg")
+
+[node name="Title" type="Label" parent="Options Menu"]
+offset_left = -164.0
+offset_top = -126.0
+offset_right = 306.0
+offset_bottom = -50.0
+theme_override_font_sizes/font_size = 44
+text = "Options & Credits"
+
+[node name="Close Options Box" type="Button" parent="Options Menu"]
+layout_mode = 0
+offset_left = -229.0
+offset_top = -146.0
+offset_right = -169.0
+offset_bottom = -44.0
+theme_override_colors/font_color = Color(0.92549, 0.4, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0.760784, 0.219608, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.568627, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 72
+text = "X"
+flat = true
+
+[node name="Credits" type="Label" parent="Options Menu"]
+offset_left = -218.0
+offset_top = 74.0
+offset_right = 252.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 31
+text = "Game by Cormac Somerville"
+
+[node name="Port Text" type="Label" parent="Options Menu"]
+offset_left = -221.0
+offset_top = -51.0
+offset_right = 249.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 31
+text = "Current Hosting Port"
+
+[node name="Port Warning" type="Label" parent="Options Menu"]
+offset_left = -225.0
+offset_top = -13.0
+offset_right = 264.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 17
+text = "All players must choose the same port. Default is 41761"
+
+[node name="Port" type="SpinBox" parent="Options Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 104.0
+offset_top = -44.0
+offset_right = 236.0
+offset_bottom = -14.03
+grow_horizontal = 2
+theme = ExtResource("1_cyup8")
+min_value = 1024.0
+max_value = 49151.0
+value = 41761.0
+alignment = 1
+
 [node name="Error" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_23ov7")
 
 [connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
 [connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]
+[connection signal="pressed" from="Options Button" to="GUI Menu Manager" method="_on_options_button_pressed"]
 [connection signal="pressed" from="Join Menu/Join Button" to="Multiplayer Manager" method="_on_join_button_pressed"]
 [connection signal="pressed" from="Join Menu/Close Join Box" to="GUI Menu Manager" method="_on_close_join_box_pressed"]
 [connection signal="pressed" from="Lobby/Play Button" to="Multiplayer Manager" method="_on_play_button_pressed"]
@@ -482,3 +595,4 @@ stream = ExtResource("17_23ov7")
 [connection signal="pressed" from="Cant Connect Box/Close Cant Connect Box" to="GUI Menu Manager" method="_on_close_cant_connect_box_pressed"]
 [connection signal="pressed" from="Change Pen Color Button" to="GUI Menu Manager" method="_on_change_pen_color_button_pressed"]
 [connection signal="pressed" from="Change Card Color Button" to="GUI Menu Manager" method="_on_change_card_color_button_pressed"]
+[connection signal="pressed" from="Options Menu/Close Options Box" to="GUI Menu Manager" method="_on_close_options_box_pressed"]
