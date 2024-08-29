@@ -7,7 +7,7 @@ using System.Linq;
 public partial class BingoManager : Node
 {
 	// Enum for game state
-	public enum GameState { GENERATING_CARDS, CARD_SLIDE_IN, BALL_ROLL, DRAWING_BALL, AFTER_BALL_SYNC, BINGO, NEW_GAME_TYPE, GAME_END };
+	public enum GameState { GENERATING_CARDS, CARD_SLIDE_IN, BALL_ROLL, DRAWING_BALL, AFTER_BALL_SYNC, BINGO, NEW_GAME_TYPE, GAME_END, ALL_BALLS_CALLED };
 
 	// Current game state
 	GameState currentGameState;
@@ -73,6 +73,9 @@ public partial class BingoManager : Node
 	// == Game Over Animation variables
 	Node2D gameOverPopupBox;
 
+	// == All balls called animation variables
+	Node2D allBallsCalledPopupBox;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -83,6 +86,7 @@ public partial class BingoManager : Node
 		// Setup the called balls array
 		calledBalls = new List<int>();
 		//for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
+		for (int i = 1; i < 90;  i++) { calledBalls.Add(i); }
 
         // Setup winners array 
         winnerIds = new long[3];
@@ -117,6 +121,9 @@ public partial class BingoManager : Node
 
         // Setup game over popup
         gameOverPopupBox = GetParent().GetNode<Node2D>("./Game Over Popup");
+
+        // Setup All balls called popup
+        allBallsCalledPopupBox = GetParent().GetNode<Node2D>("./All Balls Called Popup");
 
         // Load font for player names
         kalinaBold = ResourceLoader.Load<FontFile>("res://Fonts/Kalina/Kalnia-Bold.ttf");
@@ -167,6 +174,11 @@ public partial class BingoManager : Node
                 if (stateChanged)
                 {
 					stateChanged = false;
+					// If there are 90 or more balls in called balls we have called them all, switch to the all balls called popup state. 
+					if (calledBalls.Count >= 90) { 
+						ChangeState(GameState.ALL_BALLS_CALLED); 
+						break;
+					}
 					if (Multiplayer.IsServer())
 					{
 						GD.Print("Rolling Ball");
@@ -256,8 +268,8 @@ public partial class BingoManager : Node
                 }
                 if (timeInState <= 0.5f)
 				{
-					
 
+                    allBallsCalledPopupBox.Position = (Vector2)Tween.InterpolateValue(new Vector2(-316, 0), new Vector2(0, -650), timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut); // is hidden unless all balls called
                     otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(500, 0), new Vector2(200, 0), timeInState, 0.5, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
                     if (BW_winningPlayerId != Multiplayer.GetUniqueId())
 					{
@@ -387,6 +399,16 @@ public partial class BingoManager : Node
 					bingoButton.HideBingoButton();
                 }
                 break;
+			case GameState.ALL_BALLS_CALLED:
+				if(stateChanged)
+				{
+					stateChanged = false;
+					allBallsCalledPopupBox.Show();
+                }
+				if (timeInState <= 0.7f) {
+					allBallsCalledPopupBox.Position = (Vector2)Tween.InterpolateValue(new Vector2(-316, -650), new Vector2(0, 650), timeInState, 0.7, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
+                }
+				break;
 		}
 		timeInState += delta;
 	}

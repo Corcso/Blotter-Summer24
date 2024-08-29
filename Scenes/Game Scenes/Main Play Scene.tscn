@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=35 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="Texture2D" uid="uid://dypa61fbpyv6h" path="res://Sprites/Backgrounds/Attempt1.png" id="1_2oaxa"]
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="20_hbxht"]
 [ext_resource type="AudioStream" uid="uid://u4ahb55lq6o1" path="res://Sounds/SFX/Bingo-Win.wav" id="21_sqpro"]
 [ext_resource type="Texture2D" uid="uid://xq7sf8f3s5y4" path="res://Sprites/UI/YellowSpecial 768x256.png" id="25_nf3jy"]
+[ext_resource type="Texture2D" uid="uid://0hxxhvpmumit" path="res://Sprites/UI/BallsCalled.png" id="26_6b2hi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
 font = ExtResource("4_m4kv1")
@@ -78,7 +79,6 @@ bingoCardScene = ExtResource("1_8gael")
 position = Vector2(-316, -654)
 
 [node name="PLACEHOLDER" parent="Player Bingo Card" instance=ExtResource("1_8gael")]
-visible = false
 
 [node name="WhitePenBlot" type="Sprite2D" parent="Player Bingo Card/PLACEHOLDER"]
 position = Vector2(40, 138)
@@ -234,6 +234,10 @@ theme_override_font_sizes/font_size = 72
 text = "Now Playing For
 Full House!"
 horizontal_alignment = 1
+
+[node name="All Balls Called Popup" type="Sprite2D" parent="."]
+position = Vector2(-316, -653)
+texture = ExtResource("26_6b2hi")
 
 [node name="Game Over Popup" type="Sprite2D" parent="."]
 visible = false
