@@ -86,7 +86,7 @@ public partial class BingoManager : Node
 		// Setup the called balls array
 		calledBalls = new List<int>();
 		//for (int i = 1; i < 91;  i++) { calledBalls.Add(i); }
-		for (int i = 1; i < 90;  i++) { calledBalls.Add(i); }
+		//for (int i = 1; i < 90;  i++) { calledBalls.Add(i); }
 
         // Setup winners array 
         winnerIds = new long[3];
