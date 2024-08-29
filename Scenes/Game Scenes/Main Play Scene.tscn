@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=37 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="Texture2D" uid="uid://dypa61fbpyv6h" path="res://Sprites/Backgrounds/Attempt1.png" id="1_2oaxa"]
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
@@ -28,6 +28,8 @@
 [ext_resource type="AudioStream" uid="uid://u4ahb55lq6o1" path="res://Sounds/SFX/Bingo-Win.wav" id="21_sqpro"]
 [ext_resource type="Texture2D" uid="uid://xq7sf8f3s5y4" path="res://Sprites/UI/YellowSpecial 768x256.png" id="25_nf3jy"]
 [ext_resource type="Texture2D" uid="uid://0hxxhvpmumit" path="res://Sprites/UI/BallsCalled.png" id="26_6b2hi"]
+[ext_resource type="AudioStream" uid="uid://ydp7brbyeukb" path="res://Sounds/Game Loop.wav" id="29_mria7"]
+[ext_resource type="AudioStream" uid="uid://c3gkifnrtr5fh" path="res://Sounds/Wait Loop.wav" id="30_qn6sc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1sbt"]
 font = ExtResource("4_m4kv1")
@@ -70,10 +72,12 @@ texture = ExtResource("1_2oaxa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="BingoManager" type="Node" parent="." node_paths=PackedStringArray("bingoBall")]
+[node name="BingoManager" type="Node" parent="." node_paths=PackedStringArray("bingoBall", "inGameMusic", "inWaitMusic")]
 script = ExtResource("4_umn3p")
 bingoBall = NodePath("../Ball")
 bingoCardScene = ExtResource("1_8gael")
+inGameMusic = NodePath("../In Game Music")
+inWaitMusic = NodePath("../Game Wait Music")
 
 [node name="Player Bingo Card" type="Node2D" parent="."]
 position = Vector2(-316, -654)
@@ -337,6 +341,13 @@ offset_bottom = 237.0
 theme = ExtResource("11_nejf4")
 theme_override_font_sizes/font_size = 48
 text = "Exit Game"
+
+[node name="In Game Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_mria7")
+
+[node name="Game Wait Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_qn6sc")
+autoplay = true
 
 [connection signal="pressed" from="Bingo Button" to="BingoManager" method="_on_bingo_button_pressed"]
 [connection signal="pressed" from="Game Over Popup/Play Again Button" to="Game Over Popup" method="_on_play_again_button_pressed"]

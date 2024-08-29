@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=20 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://be153yre10jb1" path="res://Sprites/Bingo Cards/Card Selector Colour Foreground.png" id="14_mxy7t"]
 [ext_resource type="Texture2D" uid="uid://33ga0kdkq8tm" path="res://Sprites/UI/GreenMenu 512x256.png" id="17_3ysmg"]
 [ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="17_23ov7"]
+[ext_resource type="AudioStream" uid="uid://dhm1s5qyhihjn" path="res://Sounds/Menu Loop.wav" id="19_g5a16"]
 
 [node name="Control" type="Control"]
 texture_filter = 1
@@ -270,7 +271,7 @@ theme_override_font_sizes/font_size = 72
 text = "X"
 flat = true
 
-[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "port", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton", "errorSFX")]
+[node name="Multiplayer Manager" type="Node" parent="." node_paths=PackedStringArray("address", "port", "playersListGrid", "lobbyMenu", "playerNameInput", "disconnectBox", "cantConnectBox", "connectingBox", "penColorButton", "cardColorButton", "errorSFX", "menuMusic")]
 script = ExtResource("2_fd32g")
 address = NodePath("../Join Menu/Address")
 port = NodePath("../Options Menu/Port")
@@ -283,6 +284,7 @@ connectingBox = NodePath("../Connecting Box")
 penColorButton = NodePath("../Change Pen Color Button")
 cardColorButton = NodePath("../Change Card Color Button")
 errorSFX = NodePath("../Error")
+menuMusic = NodePath("../Menu Music")
 
 [node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "optionsBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
@@ -583,6 +585,10 @@ alignment = 1
 
 [node name="Error" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_23ov7")
+
+[node name="Menu Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_g5a16")
+autoplay = true
 
 [connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
 [connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]

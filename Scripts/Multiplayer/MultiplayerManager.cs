@@ -26,6 +26,8 @@ public partial class MultiplayerManager : Node
 
     // Sound effects for main menu
     [Export] AudioStreamPlayer errorSFX;
+    // Menu music
+    [Export] AudioStreamPlayer menuMusic;
 
     // Boolean to store if we are currently in game, used by host to kick players which connect mid game.
     bool inGame = false;
@@ -98,6 +100,9 @@ public partial class MultiplayerManager : Node
 
         // Play error sound
         errorSFX.Play();
+
+        // Play menu music
+        menuMusic.Play();
     }
 
     public void ConnectedToServer()
@@ -204,6 +209,8 @@ public partial class MultiplayerManager : Node
         this.GetParent<Control>().Hide();
         // Set in game to true
         inGame = true;
+        // Stop menu music
+        menuMusic.Stop();
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]

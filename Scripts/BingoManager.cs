@@ -76,6 +76,10 @@ public partial class BingoManager : Node
 	// == All balls called animation variables
 	Node2D allBallsCalledPopupBox;
 
+	// In game music
+	[Export] AudioStreamPlayer inGameMusic;
+	[Export] AudioStreamPlayer inWaitMusic; // Used for end screen and card generation
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -155,10 +159,19 @@ public partial class BingoManager : Node
                     otherPlayerCardHolder.Position = new Vector2(700, 0);
 					bingoButton.Position = new Vector2(-128, 380);
 					generatingCardsPopup.Visible = true;
+                    // Start Wait Music
+                    inWaitMusic.Play();
                 }
 				if (Multiplayer.IsServer()) SetupNewBingoCards();
                 break;
 			case GameState.CARD_SLIDE_IN:
+				if (stateChanged) {
+					stateChanged = false;
+                    // Start in game music
+                    inGameMusic.Play();
+                    // Stop Wait Music
+                    inWaitMusic.Stop();
+                }
                 playerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(-316, -650), new Vector2(0, 650), timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
                 playerCardHolder.RotationDegrees = (float)Tween.InterpolateValue(-35, 35, timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
                 otherPlayerCardHolder.Position = (Vector2)Tween.InterpolateValue(new Vector2(700, 0), new Vector2(-200, 0), timeInState, 0.75, Tween.TransitionType.Cubic, Tween.EaseType.Out);
@@ -265,6 +278,8 @@ public partial class BingoManager : Node
 					BW_BallPositionWhenBingoPressed = bingoBall.Position;
 					BW_playerNameBoomText.Text = GameManager.players[BW_winningPlayerId].name;
 					BW_playerNameBoomText.LabelSettings.OutlineColor = GameManager.players[BW_winningPlayerId].cardColor;
+					// Stop the in game music
+					inGameMusic.Stop();
                 }
                 if (timeInState <= 0.5f)
 				{
@@ -354,7 +369,9 @@ public partial class BingoManager : Node
 				else if (timeInState > 2.1f) { 
 					ChangeState(GameState.BALL_ROLL);
 					newGameTypePopupBox.Hide();
-				}
+                    // Play in game music again 
+                    inGameMusic.Play();
+                }
                 break;
 			case GameState.GAME_END:
                 POPUP_START_POSITION = new Vector2(0, -650);
@@ -385,6 +402,11 @@ public partial class BingoManager : Node
                         gameOverPopupBox.GetNode<Control>("./Play Again Button").Hide();
                         gameOverPopupBox.GetNode<Control>("./Exit Game Button").Hide();
                     }
+
+                    // Stop in game music
+                    inGameMusic.Stop();
+					// Start Wait Music
+					inWaitMusic.Play();
                 }
                 if (timeInState <= 0.7f)
                 {
