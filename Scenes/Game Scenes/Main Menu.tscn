@@ -521,6 +521,7 @@ grow_vertical = 2
 texture = ExtResource("17_3ysmg")
 
 [node name="Title" type="Label" parent="Options Menu"]
+layout_mode = 0
 offset_left = -164.0
 offset_top = -126.0
 offset_right = 306.0
@@ -544,6 +545,7 @@ text = "X"
 flat = true
 
 [node name="Credits" type="Label" parent="Options Menu"]
+layout_mode = 0
 offset_left = -218.0
 offset_top = 74.0
 offset_right = 252.0
@@ -552,6 +554,7 @@ theme_override_font_sizes/font_size = 31
 text = "Game by Cormac Somerville"
 
 [node name="Port Text" type="Label" parent="Options Menu"]
+layout_mode = 0
 offset_left = -221.0
 offset_top = -51.0
 offset_right = 249.0
@@ -560,6 +563,7 @@ theme_override_font_sizes/font_size = 31
 text = "Current Hosting Port"
 
 [node name="Port Warning" type="Label" parent="Options Menu"]
+layout_mode = 0
 offset_left = -225.0
 offset_top = -13.0
 offset_right = 264.0
