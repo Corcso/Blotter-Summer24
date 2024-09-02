@@ -211,18 +211,29 @@ label_settings = SubResource("LabelSettings_vnfay")
 horizontal_alignment = 2
 
 [node name="Generating Cards Popup" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("10_7l2cr")
 
-[node name="Label" type="Label" parent="Generating Cards Popup"]
-offset_left = -230.0
-offset_top = -103.0
-offset_right = 231.0
-offset_bottom = 96.0
+[node name="Generating Cards Text" type="Label" parent="Generating Cards Popup"]
+offset_left = -227.0
+offset_top = 82.0
+offset_right = 234.0
+offset_bottom = 130.0
 theme = ExtResource("11_nejf4")
-theme_override_font_sizes/font_size = 72
-text = "Generating
-Bingo Cards"
+theme_override_font_sizes/font_size = 30
+text = "Generating Bingo Cards..."
+horizontal_alignment = 1
+
+[node name="Playing For Row Text" type="Label" parent="Generating Cards Popup"]
+offset_left = -301.0
+offset_top = -111.0
+offset_right = 305.0
+offset_bottom = 123.0
+theme = ExtResource("11_nejf4")
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 56
+text = "First Playing 
+Bingo for a 
+Horizontal Row"
 horizontal_alignment = 1
 
 [node name="New Game Type Popup" type="Sprite2D" parent="."]
