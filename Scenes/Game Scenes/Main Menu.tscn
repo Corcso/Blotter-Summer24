@@ -150,7 +150,6 @@ offset_bottom = 10.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_4ykm6")
 theme_override_font_sizes/font_size = 38
-text = "127.0.0.1"
 placeholder_text = "XXX.XXX.XXX.XXX"
 alignment = 1
 max_length = 15
