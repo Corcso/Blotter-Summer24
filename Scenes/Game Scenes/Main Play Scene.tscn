@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://xr5l5vfgglbj"]
+[gd_scene load_steps=38 format=3 uid="uid://xr5l5vfgglbj"]
 
 [ext_resource type="Texture2D" uid="uid://dypa61fbpyv6h" path="res://Sprites/Backgrounds/Attempt1.png" id="1_2oaxa"]
 [ext_resource type="PackedScene" uid="uid://clwk2634ogqgh" path="res://Scenes/Object Scenes/Bingo Card.tscn" id="1_8gael"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dhcp3brqumwtx" path="res://Sounds/SFX/Blot-SFX-04.wav" id="14_ec11x"]
 [ext_resource type="Texture2D" uid="uid://g28u2tvdfbjq" path="res://Sprites/UI/OrangeMenu - 1024x512.png" id="15_27jtk"]
 [ext_resource type="Script" path="res://Scripts/Individual Node Scripts/GameOverButtons.cs" id="16_p43k4"]
+[ext_resource type="Texture2D" uid="uid://c3evgfbdilffe" path="res://Sprites/UI/Bingo Button Hover.png" id="19_g2ng4"]
 [ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="20_hbxht"]
 [ext_resource type="AudioStream" uid="uid://u4ahb55lq6o1" path="res://Sounds/SFX/Bingo-Win.wav" id="21_sqpro"]
 [ext_resource type="Texture2D" uid="uid://xq7sf8f3s5y4" path="res://Sprites/UI/YellowSpecial 768x256.png" id="25_nf3jy"]
@@ -187,6 +188,7 @@ offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("8_jodr4")
+texture_hover = ExtResource("19_g2ng4")
 script = ExtResource("11_n32g3")
 
 [node name="Bingo Not Success" type="AudioStreamPlayer" parent="Bingo Button"]
@@ -211,6 +213,7 @@ label_settings = SubResource("LabelSettings_vnfay")
 horizontal_alignment = 2
 
 [node name="Generating Cards Popup" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("10_7l2cr")
 
 [node name="Generating Cards Text" type="Label" parent="Generating Cards Popup"]
