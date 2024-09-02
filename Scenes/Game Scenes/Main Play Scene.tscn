@@ -125,27 +125,6 @@ stream = ExtResource("10_uecp5")
 [node name="Ball Roll" type="AudioStreamPlayer" parent="Ball"]
 stream = ExtResource("11_o13d5")
 
-[node name="My Pen" type="Node2D" parent="."]
-position = Vector2(-176, -251)
-rotation = 1.13446
-script = ExtResource("8_fnnak")
-blotTexture = ExtResource("10_4cpba")
-
-[node name="Background" type="Sprite2D" parent="My Pen"]
-position = Vector2(0.383764, -49.2144)
-texture = ExtResource("10_vriu2")
-
-[node name="Middleground" type="Sprite2D" parent="My Pen"]
-position = Vector2(0.383764, -49.2144)
-texture = ExtResource("11_ywp1c")
-
-[node name="Foreground" type="Sprite2D" parent="My Pen"]
-position = Vector2(0.383764, -49.2144)
-texture = ExtResource("12_twryy")
-
-[node name="Blot SFX" type="AudioStreamPlayer" parent="My Pen"]
-stream = ExtResource("14_ec11x")
-
 [node name="Other Players Cards" type="Node2D" parent="."]
 position = Vector2(500, 0)
 rotation = -1.57079
@@ -211,6 +190,27 @@ rotation = 0.959931
 text = "Player"
 label_settings = SubResource("LabelSettings_vnfay")
 horizontal_alignment = 2
+
+[node name="My Pen" type="Node2D" parent="."]
+position = Vector2(-176, -251)
+rotation = 1.13446
+script = ExtResource("8_fnnak")
+blotTexture = ExtResource("10_4cpba")
+
+[node name="Background" type="Sprite2D" parent="My Pen"]
+position = Vector2(0.383764, -49.2144)
+texture = ExtResource("10_vriu2")
+
+[node name="Middleground" type="Sprite2D" parent="My Pen"]
+position = Vector2(0.383764, -49.2144)
+texture = ExtResource("11_ywp1c")
+
+[node name="Foreground" type="Sprite2D" parent="My Pen"]
+position = Vector2(0.383764, -49.2144)
+texture = ExtResource("12_twryy")
+
+[node name="Blot SFX" type="AudioStreamPlayer" parent="My Pen"]
+stream = ExtResource("14_ec11x")
 
 [node name="Generating Cards Popup" type="Sprite2D" parent="."]
 visible = false

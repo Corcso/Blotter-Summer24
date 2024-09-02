@@ -103,6 +103,9 @@ public partial class MultiplayerManager : Node
 
         // Play menu music
         menuMusic.Play();
+
+        // Show cursor
+        Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     public void ConnectedToServer()
@@ -211,6 +214,8 @@ public partial class MultiplayerManager : Node
         inGame = true;
         // Stop menu music
         menuMusic.Stop();
+        // Hide cursor
+        Input.MouseMode = Input.MouseModeEnum.Hidden;
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
