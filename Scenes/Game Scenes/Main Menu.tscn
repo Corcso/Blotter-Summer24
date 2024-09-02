@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://crjc5onjn1iy7"]
+[gd_scene load_steps=21 format=3 uid="uid://crjc5onjn1iy7"]
 
 [ext_resource type="Theme" uid="uid://c3uf4t74eb57x" path="res://GUI_Main.tres" id="1_cyup8"]
 [ext_resource type="FontFile" uid="uid://ct2qao8mn1e2o" path="res://Fonts/Kalina/Kalnia-Bold.ttf" id="2_4ykm6"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://33ga0kdkq8tm" path="res://Sprites/UI/GreenMenu 512x256.png" id="17_3ysmg"]
 [ext_resource type="AudioStream" uid="uid://dqgj66anq5t5" path="res://Sounds/SFX/Error.wav" id="17_23ov7"]
 [ext_resource type="AudioStream" uid="uid://dhm1s5qyhihjn" path="res://Sounds/Menu Loop.wav" id="19_g5a16"]
+[ext_resource type="Texture2D" uid="uid://bdlon4duj13ci" path="res://Sprites/UI/How To Play.png" id="20_2b55a"]
 
 [node name="Control" type="Control"]
 texture_filter = 1
@@ -81,14 +82,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = 104.0
-offset_right = 99.0
-offset_bottom = 174.0
+offset_left = -101.0
+offset_top = 173.0
+offset_right = 92.0
+offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Options"
+
+[node name="How To Play Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = 100.0
+offset_right = 156.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "How To Play"
 
 [node name="Join Menu" type="Control" parent="."]
 visible = false
@@ -286,12 +303,13 @@ cardColorButton = NodePath("../Change Card Color Button")
 errorSFX = NodePath("../Error")
 menuMusic = NodePath("../Menu Music")
 
-[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "optionsBox", "penColorButton", "cardColorButton")]
+[node name="GUI Menu Manager" type="Node" parent="." node_paths=PackedStringArray("joinMenu", "disconnectBox", "cantConnectBox", "optionsBox", "howToPlayBox", "penColorButton", "cardColorButton")]
 script = ExtResource("8_ajk4h")
 joinMenu = NodePath("../Join Menu")
 disconnectBox = NodePath("../Disconnected Box")
 cantConnectBox = NodePath("../Cant Connect Box")
 optionsBox = NodePath("../Options Menu")
+howToPlayBox = NodePath("../How To Play Box")
 penColorButton = NodePath("../Change Pen Color Button")
 cardColorButton = NodePath("../Change Card Color Button")
 
@@ -587,16 +605,40 @@ max_value = 49151.0
 value = 41761.0
 alignment = 1
 
-[node name="Error" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_23ov7")
+[node name="How To Play Box" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 197.0
+offset_top = 91.0
+offset_right = 965.0
+offset_bottom = 603.0
+texture = ExtResource("20_2b55a")
+
+[node name="Close How To Play Box" type="Button" parent="How To Play Box"]
+offset_left = 699.0
+offset_top = -14.0
+offset_right = 759.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.92549, 0.4, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0.760784, 0.219608, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.568627, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 72
+text = "X"
+flat = true
 
 [node name="Menu Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_g5a16")
 autoplay = true
 
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_23ov7")
+
 [connection signal="pressed" from="Host Button" to="Multiplayer Manager" method="_on_host_button_pressed"]
 [connection signal="pressed" from="Open Join Menu" to="GUI Menu Manager" method="_on_open_join_menu_pressed"]
 [connection signal="pressed" from="Options Button" to="GUI Menu Manager" method="_on_options_button_pressed"]
+[connection signal="pressed" from="How To Play Button" to="GUI Menu Manager" method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="Join Menu/Join Button" to="Multiplayer Manager" method="_on_join_button_pressed"]
 [connection signal="pressed" from="Join Menu/Close Join Box" to="GUI Menu Manager" method="_on_close_join_box_pressed"]
 [connection signal="pressed" from="Lobby/Play Button" to="Multiplayer Manager" method="_on_play_button_pressed"]
@@ -606,3 +648,4 @@ autoplay = true
 [connection signal="pressed" from="Change Pen Color Button" to="GUI Menu Manager" method="_on_change_pen_color_button_pressed"]
 [connection signal="pressed" from="Change Card Color Button" to="GUI Menu Manager" method="_on_change_card_color_button_pressed"]
 [connection signal="pressed" from="Options Menu/Close Options Box" to="GUI Menu Manager" method="_on_close_options_box_pressed"]
+[connection signal="pressed" from="How To Play Box/Close How To Play Box" to="GUI Menu Manager" method="_on_close_how_to_play_box_pressed"]

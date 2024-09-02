@@ -9,6 +9,7 @@ public partial class MainMenuManager : Node
     [Export] Control disconnectBox;
     [Export] Control cantConnectBox;
     [Export] Control optionsBox;
+    [Export] Control howToPlayBox;
 
 	int currentPenColourChoice = 0;
 	int currentCardColorChoice = 0;
@@ -97,5 +98,13 @@ public partial class MainMenuManager : Node
 
     public void _on_close_options_box_pressed() { 
         optionsBox.Visible = false;
+    }
+
+    public void _on_how_to_play_button_pressed() {
+        howToPlayBox.Visible = true;
+    }
+
+    public void _on_close_how_to_play_box_pressed() {
+        howToPlayBox.Visible = false;
     }
 }
