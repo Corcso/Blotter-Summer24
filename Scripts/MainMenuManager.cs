@@ -49,7 +49,7 @@ public partial class MainMenuManager : Node
 	{ disconnectBox.Visible = false; }
 
 	public void _on_change_pen_color_button_pressed() {
-		currentPenColourChoice = (currentPenColourChoice + 1) % 6;
+		currentPenColourChoice = (currentPenColourChoice + 1) % 7;
 		Color penColor = new Color();
         switch (currentPenColourChoice)
         {
@@ -59,6 +59,7 @@ public partial class MainMenuManager : Node
             case 3: penColor = new Color(0.85f, 0.7f, 0); break; // Yellow
             case 4: penColor = new Color(0.66f, 0, 0.85f); break; // Purple
             case 5: penColor = new Color(0.22f, 0.36f, 0.75f); break; // Blue
+            case 6: penColor = new Color(0.93f, 0.51f, 0.0f); break; // Orange
         }
         penColorButton.GetNode<Node2D>("./Background").Modulate = penColor;
         penColorButton.GetNode<Node2D>("./Foreground").Modulate = penColor;
@@ -66,7 +67,7 @@ public partial class MainMenuManager : Node
     }
 
 	public void _on_change_card_color_button_pressed() {
-        currentCardColorChoice = (currentCardColorChoice + 1) % 6;
+        currentCardColorChoice = (currentCardColorChoice + 1) % 7;
         Color cardColor = new Color();
         switch (currentCardColorChoice)
         {
@@ -76,6 +77,7 @@ public partial class MainMenuManager : Node
             case 3: cardColor = new Color(0.85f, 0.7f, 0); break; // Yellow
             case 4: cardColor = new Color(0.66f, 0, 0.85f); break; // Purple
             case 5: cardColor = new Color(0.22f, 0.36f, 0.75f); break; // Blue
+            case 6: cardColor = new Color(0.93f, 0.51f, 0.0f); break; // Orange
         }
         cardColorButton.GetNode<Node2D>("./Background").Modulate = cardColor;
         multiplayerManager.playerCardColor = cardColor;
