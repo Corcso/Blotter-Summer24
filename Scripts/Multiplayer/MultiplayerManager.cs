@@ -225,6 +225,12 @@ public partial class MultiplayerManager : Node
             peer.DisconnectPeer((int)id, true);
             return;
         }
+        // If we are the host and there is already 4 players, force disconenct this player
+        if (Multiplayer.IsServer() && GameManager.playerIds.Count >= 4)
+        {
+            peer.DisconnectPeer((int)id, true);
+            return;
+        }
         PlayerInfo info = new PlayerInfo() { 
             name = name,
             id = id,
