@@ -265,7 +265,10 @@ public partial class BingoManager : Node
                 }
 				// Wait until sync has been recieved from all players
 				if (syncCount >= GameManager.playerIds.Count) {
-                    ChangeState(GameState.BALL_ROLL);
+                    // Change to ball roll state
+					ChangeState(GameState.BALL_ROLL);
+					// Reset sync
+					syncCount = 0;
                     break;
                 }
                 break;
